@@ -1,66 +1,163 @@
-<html>
+
+<!doctype html>
+<html lang="ee">
     <head>
         <meta charset="utf-8">
-        <meta name="description" content="Veebilehtede loomine edasijõudnutele kodutöö 2-">
-      
-        <meta name="viewpoint" content="width=device-width, initial-scale=1.0"/>
-
-        <title>RETSEPTIRAAMAT</title>
-     <link rel="stylesheet" href="reset.css" />
-      <link rel="stylesheet" href="stylesheet.css" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content=""> 
+        <meta name="author" content="">
+        <title>Avaleht</title>
+        <!-- Bootstrap CSS --->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> 
+        <!-- minu CSS --->
+        <link rel="stylesheet" href="custom.css">
     </head>
     <body>
-        <header>
-            <section class="banner">
-                <h1>COOKBOOK</h1>
-                <h2>EESTI MAITSVAIM RETSEPTIRAAMAT</h2>
-            </section>
-                <nav>
-                    <ul>
-                        <li><a href="#">RETSEPTID</a></li>
-                        <li><a href="#">VÕTA ÜHENDUST</a></li>
-                    </ul>
-                    <div class="photo ">
-                        <IMG align=center src="https://www.goslingandgosling.co.uk/wp-content/uploads/2018/07/Menu5.jpg"></IMG>
-                    </div>
-                </nav>
+        <!-- päis --->
+        <header class="py-2">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col my-3 text-center"><a href="index.html"><img src="logo2.png" width="50%"></a></div>              
+                </div>          
+            </div>
         </header>
-
-        <hr>
-
-        <main> 
-        <h2>MEIST</h2>
-            <div class="index-header">
-                <img src="https://blog.instawork.com/hubfs/iStock-1162911786.jpg"></img>
-                <p>Lorem Ipsum on lihtsalt proovitekst, mida kasutatakse printimis- ja ladumistööstuses. See on olnud tööstuse põhiline proovitekst juba alates 1500. aastatest, mil tundmatu printija võttis hulga suvalist teksti, et teha trükinäidist. Lorem Ipsum ei ole ainult viis sajandit säilinud, vaid on ka edasi kandunud elektroonilisse trükiladumisse, jäädes sealjuures peaaegu muutumatuks. See sai tuntuks 1960. aastatel Letraset'i lehtede väljalaskmisega, ja hiljuti tekstiredaktoritega nagu Aldus PageMaker, mis sisaldavad erinevaid Lorem Ipsumi versioone.On teada-tuntud fakt, et lehe kujunduse vaatamisel juhib selle loetav sisu lugeja tähelepanu kõrvale. Lorem Ipsumi kasutamise mõte seisneb selles, et sellel on enam-vähem normaalne jaotus tähti, mitte nagu korduvatel sõnadel "sisu siin, sisu siin", nähes välja nagu tavaline loetav tekst. Paljud tekstiredaktorid ja veebilehtede valmistamise programmid kasutavad Lorem Ipsumit vaikimisi mudeltekstina, ja trükkides otsingusse "lorem ipsum" võib leida veebilehti, mida ei ole veel nende õige sisuga täidetud. Aastatega on tekkinud mitmeid versioone, mõnikord kogemata, mõnikord meelega (huumori sisestamisega jne).</p>
+        <!-- navigatsioon -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-white shadow">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item"><a class="nav-link" href="#">Uued tooted</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Vannitooted</a> 
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink"> 
+                            <a class="dropdown-item" href="#">Vannisoolad</a> 
+                            <a class="dropdown-item" href="#">Vannipiimad</a> 
+                            <a class="dropdown-item" href="#">Vannipommid</a>
+                            <a class="dropdown-item" href="list.html">Seebid ja du&scaron;igeelid</a>
+                        </div> 
+                    </li> 
+                    <li class="nav-item dropdown"> 
+                        <a class="nav-link" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Kehahooldus</a> 
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink"> 
+                            <a class="dropdown-item" href="#">Kehakreemid</a> 
+                            <a class="dropdown-item" href="#">Keha&otilde;lid</a> 
+                            <a class="dropdown-item" href="#">Kehakoorijad</a> 
+                            <a class="dropdown-item" href="#">Deodorandid</a> 
+                            <a class="dropdown-item" href="#">K&auml;te ja jalgade hooldus</a>  
+                        </div> 
+                    </li> 
+                    <li class="nav-item dropdown"> 
+                        <a class="nav-link" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">N&auml;ohooldus</a> 
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink"> 
+                            <a class="dropdown-item" href="#">Puhastus ja toniseerimine</a> 
+                            <a class="dropdown-item" href="#">Niisutus ja toitmine</a> 
+                            <a class="dropdown-item" href="#">Koorijad ja maskid</a> 
+                        </div> 
+                    </li> 
+                </ul>
+                <!-- search --->
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Otsi" aria-label="Search">
+                    <button class="btn btn-outline-white my-2 my-sm-0" type="submit"><svg class="lnr lnr-magnifier"><use xlink:href="#lnr-magnifier"></use></svg></button>
+                </form>
             </div>
-            <hr>
-            <section class="gallery-links">
-            <a href="#" class="food-image"><div class="container">
-              
-              <img src="https://www.eestitoit.ee/sites/default/files/styles/list_thumbnail/public/_dsc2291_-_1.jpg?itok=_4f2jZ6F"></img>
-              
-                <p>Eesti köök</p></div></a>
-            <a href="#" class="food-image"><div class="container">
-              
-              <img src="https://hips.hearstapps.com/hmg-prod/images/gettyimages-1214757157.png"></img>
-              
-                <p>Aasia köök</p></div></a>
-            <a href="#" class="food-image"><div class="container">
-              
-              <img src="https://www.tastingtable.com/img/gallery/20-italian-dishes-you-need-to-try-at-least-once/l-intro-1643403830.jpg"></img>
-                <p>Itaalia köök</p></div></a>
-            </section>
-        </main>
-        <footer>
-            <div class="disclaimer">
-                <p>24.03.2023<br>
-                tel:55555555<br>
-                meiliaadress@gmail.com</p>
-            </div>    
-            <div class="footer-sm"> 
-                <a href="#"><img src="https://icons.iconarchive.com/icons/danleech/simple/256/linkedin-icon.png"></a>      <a href="#"><img src="https://icons.iconarchive.com/icons/danleech/simple/256/facebook-icon.png"></a>
+            <!-- cart --->
+            <!--
+            <svg class="lnr mt-auto mr-3 my-3 lnr-cart"><use xlink:href="#lnr-cart"></use></svg>
+            --->
+            <button class="btn btn-dark my-2 my-sm-0" type="submit"><svg class="lnr lnr-cart"><use xlink:href="#lnr-cart"></use></svg></button>
+        </nav> 
+        <!-- breadcrumb --->
+        <section>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb bg-white ml-2">
+                    <!-- это иконка с домиком, но у меня не получилось её выровнять нормально
+                    <li class="breadcrumb-item active" aria-current="page"><button class="btn btn-link btn-lg my-2 my-sm-0" type="submit"><svg class="lnr lnr-home"><use xlink:href="#lnr-home"></use></svg></button></li>
+                    --->
+                    <li class="breadcrumb-item active" aria-current="page">Avaleht</li>
+                </ol>
+            </nav>  
+        </section>
+        <!-- jumbotron --->
+        <!-- TODO! --->
+        <!-- tooted --->
+        <section>
+            <div class="container">
+                <h2 class="h mb-3">TOP</h2>
+                    <div class="row"> 
+                    <div class="col-md-4 mb-4"> 
+                        <div class="card shadow-sm border-0 h-100 text-center"><a href="#"><img src="soap.png" alt="" class="card-img-top"></a> 
+                            <div class="card-body"> 
+                                <h5> <a href="#" class="text-dark">Toode 1</a></h5>
+                                <p class="text-muted card-text"> 15.99&#8364;</p> 
+                                <a role="button" href="toode.html" class="btn btn-outline-dark">Vaata</a>
+                            </div> 
+                        </div> 
+                    </div> 
+                    <div class="col-md-4 mb-4"> 
+                        <div class="card shadow-sm border-0 h-100 text-center"><a href="#"><img src="soap.png" alt="" class="card-img-top"></a> 
+                            <div class="card-body"> 
+                                <h5> <a href="#" class="text-dark">Toode 2</a></h5>
+                                <p class="text-muted card-text"> 12.99&#8364;</p> 
+                                <a role="button" href="#" class="btn btn-outline-dark">Vaata</a>
+                            </div> 
+                        </div> 
+                    </div> 
+                    <div class="col-md-4 mb-4"> 
+                        <div class="card shadow-sm border-0 h-100 text-center"><a href="#"><img src="soap.png" alt="" class="card-img-top"></a> 
+                            <div class="card-body"> 
+                                <h5> <a href="#" class="text-dark">Toode 3</a></h5>
+                                <p class="text-muted card-text"> 9.99&#8364;</p> 
+                                <a role="button" href="#" class="btn btn-outline-dark">Vaata</a>
+                            </div> 
+                        </div> 
+                    </div> 
+                    <div class="col-md-4 mb-4"> 
+                        <div class="card shadow-sm border-0 h-100 text-center"><a href="#"><img src="soap.png" alt="" class="card-img-top"></a> 
+                            <div class="card-body"> 
+                                <h5> <a href="#" class="text-dark">Toode 4</a></h5>
+                                <p class="text-muted card-text"> 18.99&#8364;</p> 
+                                <a role="button" href="#" class="btn btn-outline-dark">Vaata</a>
+                            </div> 
+                        </div> 
+                    </div> 
+                    <div class="col-md-4 mb-4"> 
+                        <div class="card shadow-sm border-0 h-100 text-center"><a href="#"><img src="soap.png" alt="" class="card-img-top"></a> 
+                            <div class="card-body"> 
+                                <h5> <a href="#" class="text-dark">Toode 5</a></h5>
+                                <p class="text-muted card-text"> 1.99&#8364;</p> 
+                                <a role="button" href="#" class="btn btn-outline-dark">Vaata</a>
+                            </div> 
+                        </div> 
+                    </div>
+                    <div class="col-md-4 mb-4"> 
+                        <div class="card shadow-sm border-0 h-100 text-center"><a href="#"><img src="soap.png" alt="" class="card-img-top"></a> 
+                            <div class="card-body"> 
+                                <h5> <a href="#" class="text-dark">Toode 6</a></h5>
+                                <p class="text-muted card-text"> 5.99&#8364;</p> 
+                                <a role="button" href="#" class="btn btn-outline-dark">Vaata</a>
+                            </div> 
+                        </div> 
+                    </div> 
+                </div>
             </div>
-        </footer>
-
+        </section>   
+        <!-- jalus --->
+        <footer class="bg-light">
+            <div class="container-fluid">
+                <div class="row">
+                    <!-- TODO! --->
+                    <div class="col text-center"><p>Jalus</p></div>
+                </div>
+            </div>
+        </footer>       
+        <!-- jQuery, Popper.js, Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <script src="https://cdn.linearicons.com/free/1.0.0/svgembedder.min.js"></script>
+  </body>
 </html>
