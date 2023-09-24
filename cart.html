@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ee">
 <head>
     <meta charset="utf-8">
@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Avaleht</title>
+    <title>Ostukorv</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="custom.css">
 </head>
@@ -30,7 +30,7 @@
                     <a class="nav-link" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Vannitooted</a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         <a class="dropdown-item" href="#">Vannisoolad</a>
-                        <a class "dropdown-item" href="#">Vannipiimad</a>
+                        <a class="dropdown-item" href="#">Vannipiimad</a>
                         <a class="dropdown-item" href="#">Vannipommid</a>
                         <a class="dropdown-item" href="list.html">Seebid ja du&scaron;igeelid</a>
                     </div>
@@ -54,117 +54,95 @@
                     </div>
                 </li>
             </ul>
-            <form class="form-inline my-2 my-lg-0">
+
+            <form class="form-inline m-2 my-lg-0">
                 <input class="form-control mr-sm-2" type="search" placeholder="Otsi" aria-label="Search">
-                <button class="btn btn-outline-white my-2 my-sm-0" type="submit">
-                    <svg class="lnr lnr-magnifier">
+                <button class="btn btn-outline-white my-2 my-sm-0" type="submit"><svg class="lnr lnr-magnifier">
                         <use xlink:href="#lnr-magnifier"></use>
-                    </svg>
-                </button>
+                    </svg></button>
             </form>
         </div>
-        <a href="cart.html" class="btn btn-dark my-2 my-sm-0" role="button">
-            <svg class="lnr lnr-cart">
+
+        <a href="cart.html"><button class="btn btn-dark my-2 my-sm-0" type="submit"><svg class="lnr lnr-cart">
                 <use xlink:href="#lnr-cart"></use>
-            </svg>
-        </a>
+            </svg></button></a>
     </nav>
 
     <section>
         <nav aria-label="breadcrumb">
-            <ol class="breadcrumb bg-white my-2 ml-2">
-                <li class="breadcrumb-item active" aria-current="page">Avaleht</li>
+            <ol class="breadcrumb bg-white my-2">
+                <li class="breadcrumb-item"><a href="index.html">Avaleht</a></li>
+                <li class="breadcrumb-item active">Ostukorv</li>
             </ol>
         </nav>
     </section>
 
-    <div class="jumbotron text-center">
-        <h1 class="display-4">Lorem ipsum dolor</h1>
-        <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus tempor
-                        gravida ipsum, non mollis lorem luctus ac. </p>
-        <hr class="my-4">
-        <p>Proin interdum tortor a metus efficitur blandit
-                        vitae vitae diam. Donec tortor leo, efficitur ultricies augue vel, consectetur ultrices
-                        lacus. </p>
-        <p class="lead">
-            <a class="btn btn-info btn-lg my-4" href="meist.html" role="button">Lorem ipsum dolor</a>
-        </p>
-    </div>
-
     <section>
         <div class="container">
-            <h2 class="h mb-3">TOP</h2>
             <div class="row">
-                <div class="col-md-4 mb-4">
-                    <div class="card shadow-sm border-0 h-100 text-center">
-                        <a href="#"><img src="soap.png" alt="" class="card-img-top"></a>
-                        <div class="card-body">
-                            <h5> <a href="#" class="text-dark">Toode 1</a></h5>
-                            <p class="text-muted card-text"> 15.99&#8364;</p>
-                            <a role="button" href="#" class="btn btn-outline-dark">Vaata</a>
+                <div class="col-lg-6 d-flex align-items-start flex-column">
+                    <div class="mb-auto p-2">
+                        <h4>Lorem ipsum dolor</h4>
+                    </div>
+                    <div class="mb-auto p-2 row">
+                        <div class="col-lg-6">
+                            <img src="soap.png" width="100%">
                         </div>
+                        <div class="col-lg-6">
+                            <p>15.99&#8364;</p>
+                            <p>Toode</p>
+                            <select class="form-control col-lg-5 form-sm" id="kogus">
+                                <option>0</option>
+                                <option selected="selected">1</option>
+                                <option>2</option>
+                                <option>3</option>
+                            </select>
+                            <br />
+                        </div>
+                    </div>
+                    <div class="p-2">
+                        <p>Tarne: <span class="text-primary">tasuta</span></p>
+                        <p>Kokku: <span class="text-primary">15.99&#8364;</span></p>
                     </div>
                 </div>
 
-                <div class="col-md-4 mb-4">
-                    <div class="card shadow-sm border-0 h-100 text-center">
-                        <a href="#"><img src="soap.png" alt="" class="card-img-top"></a>
-                        <div class="card-body">
-                            <h5> <a href="#" class="text-dark">Toode 2</a></h5>
-                            <p class="text-muted card-text"> 12.99&#8364;</p>
-                            <a role="button" href="#" class="btn btn-outline-dark">Vaata</a>
+                <div class="col-lg-6 d-flex flex-column">
+                    <form>
+                        <div class="form-group">
+                            <label for="nameInput">Lorem ipsum dolor</label>
+                            <input type="text" class="form-control" placeholder="Lorem ipsum dolor">
                         </div>
-                    </div>
-                </div>
-
-                <div class="col-md-4 mb-4">
-                    <div class="card shadow-sm border-0 h-100 text-center">
-                        <a href="#"><img src="soap.png" alt="" class="card-img-top"></a>
-                        <div class="card-body">
-                            <h5> <a href="#" class="text-dark">Toode 3</a></h5>
-                            <p class="text-muted card-text"> 9.99&#8364;</p>
-                            <a role="button" href="#" class="btn btn-outline-dark">Vaata</a>
+						
+                        <div class="form-group">
+                            <label for="emailInput">Lorem ipsum dolor</label>
+                            <input type="email" class="form-control" placeholder="Lorem ipsum dolor">
                         </div>
-                    </div>
-                </div>
-
-                <div class="col-md-4 mb-4">
-                    <div class="card shadow-sm border-0 h-100 text-center">
-                        <a href="#"><img src="soap.png" alt="" class="card-img-top"></a>
-                        <div class="card-body">
-                            <h5> <a href="#" class="text-dark">Toode 4</a></h5>
-                            <p class="text-muted card-text"> 18.99&#8364;</p>
-                            <a role="button" href="#" class="btn btn-outline-dark">Vaata</a>
+						
+                        <div class="form-group">
+                            <label for="phonenumberInput">Lorem ipsum dolor</label>
+                            <input type="tel" class="form-control" placeholder="Lorem ipsum dolor">
                         </div>
-                    </div>
-                </div>
-
-                <div class="col-md-4 mb-4">
-                    <div class="card shadow-sm border-0 h-100 text-center">
-                        <a href="#"><img src="soap.png" alt="" class="card-img-top"></a>
-                        <div class="card-body">
-                            <h5> <a href="#" class="text-dark">Toode 5</a></h5>
-                            <p class="text-muted card-text"> 1.99&#8364;</p>
-                            <a role="button" href="#" class="btn btn-outline-dark">Vaata</a>
+						
+                        <div class="form-group">
+                            <label for="selectShipment">Lorem ipsum dolor</label>
+                            <select class="form-control">
+                                <option>1</option>
+                                <option selected="selected">2</option>
+                                <option>3</option>
+                            </select>
                         </div>
-                    </div>
-                </div>
-
-                <div class="col-md-4 mb-4">
-                    <div class="card shadow-sm border-0 h-100 text-center">
-                        <a href="#"><img src="soap.png" alt="" class="card-img-top"></a>
-                        <div class="card-body">
-                            <h5> <a href="#" class="text-dark">Toode 6</a></h5>
-                            <p class="text-muted card-text"> 5.99&#8364;</p>
-                            <a role="button" href="#" class="btn btn-outline-dark">Vaata</a>
-                        </div>
+						
+                        
+                    </form>
+                    <div class="p-2 mx-auto">
+                        <a href="kinnitus.html" class="btn btn-warning btn-lg mb-3">Maksa</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer class="bg-light">
+   <footer class="bg-light">
     <div class="container-fluid">
         <div class="row justify-content-between">
             <div class="col-md-3 text-center">
@@ -191,7 +169,6 @@
         </div>
     </div>
 </footer>
-
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
