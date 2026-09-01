@@ -1,14 +1,25 @@
-```css
 @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+
+/* ==============================
+   VARIABLES
+============================== */
 
 :root {
   --black: #0a0a0a;
-  --white: #f7f7f5;
+  --white: #f7f7f4;
+
   --pink: #ffb6c9;
   --yellow: #fff200;
-  --gray: #b8b8b8;
-  --border: #1a1a1a;
+
+  --gray: #777;
+  --light-gray: #d8d8d4;
 }
+
+
+/* ==============================
+   RESET
+============================== */
 
 * {
   box-sizing: border-box;
@@ -20,230 +31,460 @@ html {
 
 body {
   margin: 0;
-  min-height: 100vh;
+  padding: 0;
+
   background: var(--white);
   color: var(--black);
+
   font-family: "Space Grotesk", Arial, sans-serif;
-  padding: 0;
+
+  min-height: 100vh;
 }
 
-/* ------------------------------
-   MAIN LAYOUT
------------------------------- */
+a {
+  color: inherit;
+  text-decoration: none;
+}
 
-body {
+
+/* ==============================
+   PAGE WRAPPER
+============================== */
+
+.wrap {
+  width: min(1100px, calc(100% - 48px));
+
+  min-height: 100vh;
+
+  margin: 0 auto;
+
   display: flex;
   flex-direction: column;
 }
 
-body::before {
-  content: "API / TESTER";
-  display: block;
-  padding: 18px 28px;
+
+/* ==============================
+   HEADER
+============================== */
+
+.top-row {
+  height: 72px;
+
+  display: flex;
+  align-items: center;
+
   border-bottom: 2px solid var(--black);
-  font-family: "DM Mono", monospace;
-  font-size: 12px;
-  letter-spacing: 0.15em;
 }
 
-/* ------------------------------
-   CONTAINER
------------------------------- */
-
-body > * {
-  width: min(900px, calc(100% - 56px));
-  margin-left: auto;
-  margin-right: auto;
-}
-
-h1 {
-  font-size: clamp(42px, 8vw, 90px);
-  line-height: 0.9;
-  letter-spacing: -0.07em;
-  margin-top: 80px;
-  margin-bottom: 60px;
-  max-width: 800px;
+.mark {
+  font-size: 18px;
   font-weight: 700;
+
+  letter-spacing: -0.06em;
 }
 
-/* ------------------------------
-   LABELS
------------------------------- */
 
-label {
+/* ==============================
+   MAIN
+============================== */
+
+main {
+  flex: 1;
+}
+
+
+/* ==============================
+   HERO
+============================== */
+
+.hero {
+  padding-top: 120px;
+  padding-bottom: 130px;
+
+  max-width: 850px;
+}
+
+.hero h1 {
+  margin: 0;
+
+  font-size: clamp(55px, 9vw, 105px);
+
+  line-height: 0.9;
+
+  letter-spacing: -0.075em;
+
+  font-weight: 600;
+}
+
+
+/* Pink underline */
+
+.hero h1::after {
+  content: "";
+
   display: block;
-  margin-top: 32px;
-  margin-bottom: 8px;
+
+  width: 145px;
+  height: 10px;
+
+  margin-top: 15px;
+
+  background: var(--pink);
+}
+
+
+/* Introduction */
+
+.intro {
+  max-width: 650px;
+
+  margin: 45px 0 0;
+
+  font-size: 21px;
+
+  line-height: 1.45;
+
+  letter-spacing: -0.02em;
+}
+
+
+/* ==============================
+   PROJECT SECTION
+============================== */
+
+.work {
+  width: 100%;
+}
+
+
+/* Section heading */
+
+.section-label {
+  display: flex;
+  align-items: center;
+
+  gap: 18px;
+
+  padding-bottom: 14px;
+
+  border-bottom: 2px solid var(--black);
 
   font-family: "DM Mono", monospace;
+
   font-size: 11px;
-  text-transform: uppercase;
+
   letter-spacing: 0.12em;
 }
 
-/* ------------------------------
-   INPUTS
------------------------------- */
+.section-label span {
+  color: var(--gray);
+}
 
-input,
-select,
-textarea {
+
+/* ==============================
+   FOLDERS
+============================== */
+
+.folders {
   width: 100%;
-  max-width: none;
+}
 
-  margin: 0;
-  padding: 16px 18px;
 
-  border: 2px solid var(--black);
-  border-radius: 0;
+/* Individual folder */
 
-  background: transparent;
-  color: var(--black);
+.folder {
+  display: grid;
 
-  font-family: "DM Mono", monospace;
-  font-size: 14px;
+  grid-template-columns: 45px 35px 1fr 40px;
 
-  outline: none;
+  align-items: center;
+
+  gap: 15px;
+
+  min-height: 135px;
+
+  padding: 0;
+
+  border-bottom: 1px solid var(--light-gray);
+
   transition:
-    background 120ms ease,
-    box-shadow 120ms ease,
-    transform 120ms ease;
+    background 150ms ease,
+    padding 150ms ease;
 }
 
-input:focus,
-select:focus,
-textarea:focus {
-  background: white;
-  box-shadow: 6px 6px 0 var(--pink);
+
+/* Number */
+
+.folder-number {
+  font-family: "DM Mono", monospace;
+
+  font-size: 11px;
+
+  color: var(--gray);
 }
 
-/* ------------------------------
-   SELECT
------------------------------- */
 
-select {
-  cursor: pointer;
-  appearance: none;
+/* Folder icon */
 
-  background:
-    linear-gradient(45deg, transparent 50%, var(--black) 50%) calc(100% - 20px) 20px / 6px 6px no-repeat,
-    linear-gradient(135deg, var(--black) 50%, transparent 50%) calc(100% - 14px) 20px / 6px 6px no-repeat;
+.folder-icon {
+  width: 25px;
+  height: 22px;
+
+  display: flex;
+  align-items: center;
 }
 
-/* ------------------------------
-   TEXTAREAS
------------------------------- */
+.folder-icon svg {
+  width: 24px;
+  height: auto;
 
-textarea {
-  min-height: 220px;
-  resize: vertical;
-  line-height: 1.5;
+  display: block;
 }
 
-#response {
-  min-height: 300px;
-  background: #e9e9e7;
-}
 
-/* ------------------------------
-   BUTTON
------------------------------- */
+/* Text */
 
-button {
-  width: auto;
-  min-width: 220px;
+.folder-content h2 {
+  margin: 0;
 
-  margin-top: 36px;
-  margin-bottom: 70px;
+  font-size: 27px;
 
-  padding: 17px 28px;
-
-  border: 2px solid var(--black);
-  border-radius: 0;
-
-  background: var(--black);
-  color: var(--white);
-
-  font-family: "Space Grotesk", sans-serif;
-  font-size: 15px;
   font-weight: 600;
 
-  cursor: pointer;
+  letter-spacing: -0.045em;
+}
+
+.folder-content p {
+  margin: 7px 0 0;
+
+  color: var(--gray);
+
+  font-size: 14px;
+
+  line-height: 1.4;
+}
+
+
+/* Arrow */
+
+.folder-arrow {
+  font-size: 24px;
+
+  text-align: right;
+
+  transition:
+    transform 150ms ease;
+}
+
+
+/* ==============================
+   FOLDER HOVER
+============================== */
+
+.folder:hover {
+  background: var(--yellow);
+
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+
+/* Make Challenges pink */
+
+.folder:nth-child(2):hover {
+  background: var(--pink);
+}
+
+
+/* Move arrow */
+
+.folder:hover .folder-arrow {
+  transform: translate(5px, -5px);
+}
+
+
+/* ==============================
+   FOCUS / KEYBOARD
+============================== */
+
+.folder:focus-visible,
+.footer-links a:focus-visible {
+  outline: 3px solid var(--black);
+
+  outline-offset: 4px;
+}
+
+
+/* ==============================
+   FOOTER
+============================== */
+
+footer {
+  margin-top: auto;
+
+  padding: 80px 0 30px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  color: var(--gray);
+
+  font-family: "DM Mono", monospace;
+
+  font-size: 10px;
+
+  letter-spacing: 0.04em;
+}
+
+
+/* Footer links */
+
+.footer-links {
+  display: flex;
+
+  align-items: center;
+
+  gap: 25px;
+}
+
+.footer-links a {
+  color: var(--black);
+
+  padding-bottom: 3px;
+
+  border-bottom: 1px solid transparent;
 
   transition:
     background 120ms ease,
-    color 120ms ease,
-    box-shadow 120ms ease,
-    transform 120ms ease;
+    border-color 120ms ease;
 }
 
-button:hover {
+
+/* Footer hover */
+
+.footer-links a:hover {
+  background: var(--pink);
+
+  border-bottom-color: var(--black);
+}
+
+
+/* Make CV yellow */
+
+.footer-links a:first-child:hover {
   background: var(--yellow);
-  color: var(--black);
-  box-shadow: 7px 7px 0 var(--black);
-  transform: translate(-2px, -2px);
 }
 
-button:active {
-  transform: translate(2px, 2px);
-  box-shadow: 2px 2px 0 var(--black);
-}
 
-/* ------------------------------
-   RESPONSE
------------------------------- */
-
-h2 {
-  margin-top: 0;
-  padding-top: 30px;
-
-  border-top: 2px solid var(--black);
-
-  font-size: 14px;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-
-  font-family: "DM Mono", monospace;
-}
-
-/* ------------------------------
-   PLACEHOLDERS
------------------------------- */
-
-::placeholder {
-  color: #888;
-  opacity: 1;
-}
-
-/* ------------------------------
+/* ==============================
    MOBILE
------------------------------- */
+============================== */
 
-@media (max-width: 600px) {
+@media (max-width: 650px) {
 
-  body::before {
-    padding: 14px 18px;
+  .wrap {
+    width: calc(100% - 30px);
   }
 
-  body > * {
-    width: calc(100% - 36px);
+
+  /* Header */
+
+  .top-row {
+    height: 60px;
   }
 
-  h1 {
-    margin-top: 55px;
-    margin-bottom: 45px;
-    font-size: 52px;
+
+  /* Hero */
+
+  .hero {
+    padding-top: 75px;
+    padding-bottom: 85px;
   }
 
-  input,
-  select,
-  textarea {
+  .hero h1 {
+    font-size: 58px;
+  }
+
+  .hero h1::after {
+    width: 90px;
+    height: 8px;
+  }
+
+  .intro {
+    margin-top: 35px;
+
+    font-size: 18px;
+  }
+
+
+  /* Folders */
+
+  .folder {
+    grid-template-columns: 28px 28px 1fr 25px;
+
+    gap: 8px;
+
+    min-height: 120px;
+  }
+
+  .folder-content h2 {
+    font-size: 21px;
+  }
+
+  .folder-content p {
     font-size: 13px;
   }
 
-  button {
-    width: 100%;
+  .folder-arrow {
+    font-size: 19px;
+  }
+
+
+  /* Footer */
+
+  footer {
+    padding-top: 60px;
+
+    padding-bottom: 25px;
+
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 22px;
+  }
+
+  .footer-links {
+    gap: 18px;
   }
 }
-```
 
+
+/* ==============================
+   VERY SMALL SCREENS
+============================== */
+
+@media (max-width: 400px) {
+
+  .hero h1 {
+    font-size: 50px;
+  }
+
+  .folder {
+    grid-template-columns: 22px 25px 1fr 20px;
+
+    gap: 6px;
+  }
+
+  .folder-content h2 {
+    font-size: 19px;
+  }
+
+  .folder-content p {
+    font-size: 12px;
+  }
+
+}
