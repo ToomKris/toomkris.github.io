@@ -1,704 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Kris | Portfolio</title>
-
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            background: #0d1117;
-            color: #e6edf3;
-            line-height: 1.6;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        /* NAVIGATION */
-
-        nav {
-            position: sticky;
-            top: 0;
-            z-index: 10;
-
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-
-            padding: 20px 8%;
-
-            background: rgba(13, 17, 23, 0.9);
-            border-bottom: 1px solid #30363d;
-            backdrop-filter: blur(10px);
-        }
-
-        .logo {
-            font-size: 20px;
-            font-weight: bold;
-        }
-
-        nav a {
-            color: #8b949e;
-            margin-left: 25px;
-            transition: 0.2s;
-        }
-
-        nav a:hover {
-            color: #58a6ff;
-        }
-
-        /* HERO */
-
-        .hero {
-            min-height: 80vh;
-
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-
-            max-width: 1100px;
-            margin: auto;
-            padding: 80px 8%;
-        }
-
-        .hero p {
-            color: #8b949e;
-            font-size: 16px;
-            letter-spacing: 2px;
-            margin-bottom: 15px;
-        }
-
-        .hero h1 {
-            font-size: clamp(55px, 10vw, 110px);
-            line-height: 1;
-            margin-bottom: 25px;
-        }
-
-        .hero h1 span {
-            color: #58a6ff;
-        }
-
-        .hero h2 {
-            font-size: 28px;
-            font-weight: normal;
-            color: #8b949e;
-            margin-bottom: 25px;
-        }
-
-        .hero-description {
-            max-width: 600px;
-            color: #8b949e;
-            font-size: 18px;
-            margin-bottom: 35px;
-        }
-
-        .button {
-            display: inline-block;
-
-            padding: 12px 20px;
-
-            border: 1px solid #30363d;
-            border-radius: 7px;
-
-            margin-right: 10px;
-
-            transition: 0.2s;
-        }
-
-        .button:hover {
-            border-color: #58a6ff;
-            color: #58a6ff;
-            transform: translateY(-2px);
-        }
-
-        .button.github {
-            background: #238636;
-            border-color: #238636;
-            color: white;
-        }
-
-        .button.github:hover {
-            color: white;
-            background: #2ea043;
-        }
-
-        /* GENERAL SECTIONS */
-
-        section {
-            max-width: 1100px;
-            margin: auto;
-            padding: 100px 8%;
-        }
-
-        .section-title {
-            font-size: 45px;
-            margin-bottom: 15px;
-        }
-
-        .section-description {
-            color: #8b949e;
-            margin-bottom: 40px;
-        }
-
-        /* WORK */
-
-        .work-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-        }
-
-        .work-card {
-            background: #161b22;
-            border: 1px solid #30363d;
-            border-radius: 12px;
-            padding: 30px;
-
-            transition: 0.25s;
-        }
-
-        .work-card:hover {
-            transform: translateY(-5px);
-            border-color: #58a6ff;
-        }
-
-        .work-icon {
-            font-size: 35px;
-            margin-bottom: 15px;
-        }
-
-        .work-card h3 {
-            font-size: 25px;
-            margin-bottom: 10px;
-        }
-
-        .work-card p {
-            color: #8b949e;
-            margin-bottom: 20px;
-        }
-
-        .work-card ul {
-            color: #8b949e;
-            margin-left: 20px;
-            margin-bottom: 25px;
-        }
-
-        .work-card li {
-            margin-bottom: 5px;
-        }
-
-        .card-link {
-            color: #58a6ff;
-            font-weight: bold;
-        }
-
-        /* PYTHON 100 */
-
-        .python {
-            background: #161b22;
-            border: 1px solid #30363d;
-            border-radius: 15px;
-            padding: 40px;
-        }
-
-        .python h3 {
-            font-size: 30px;
-            margin-bottom: 10px;
-        }
-
-        .python p {
-            color: #8b949e;
-            margin-bottom: 25px;
-        }
-
-        .progress-info {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 8px;
-            color: #8b949e;
-        }
-
-        .progress-bar {
-            width: 100%;
-            height: 12px;
-
-            background: #30363d;
-            border-radius: 20px;
-
-            overflow: hidden;
-            margin-bottom: 30px;
-        }
-
-        .progress {
-            width: 7%;
-            height: 100%;
-            background: #58a6ff;
-        }
-
-        .challenge-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-
-            margin-bottom: 30px;
-        }
-
-        .challenge {
-            padding: 8px 12px;
-
-            background: #0d1117;
-            border: 1px solid #30363d;
-            border-radius: 6px;
-
-            color: #8b949e;
-        }
-
-        /* ABOUT */
-
-        .about {
-            max-width: 800px;
-        }
-
-        .about p {
-            color: #8b949e;
-            font-size: 18px;
-            margin-bottom: 20px;
-        }
-
-        .skills {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 25px;
-        }
-
-        .skill {
-            padding: 8px 15px;
-
-            border: 1px solid #30363d;
-            border-radius: 20px;
-
-            color: #8b949e;
-        }
-
-        /* FOOTER */
-
-        footer {
-            text-align: center;
-
-            padding: 40px;
-
-            border-top: 1px solid #30363d;
-
-            color: #8b949e;
-        }
-
-        footer a {
-            color: #58a6ff;
-        }
-
-        /* MOBILE */
-
-        @media (max-width: 700px) {
-
-            nav {
-                flex-direction: column;
-                gap: 15px;
-            }
-
-            nav a {
-                margin: 0 8px;
-            }
-
-            .work-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .hero {
-                min-height: 70vh;
-            }
-
-            .python {
-                padding: 25px;
-            }
-        }
-
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Name — Portfolio</title>
+<link rel="stylesheet" href="style.css">
 </head>
-
-
 <body>
-
-    <!-- NAVIGATION -->
-
-    <nav>
-
-        <div class="logo">
-            KRIS
-        </div>
-
-        <div>
-            <a href="#home">Home</a>
-            <a href="#work">My Work</a>
-            <a href="#about">About</a>
-        </div>
-
-    </nav>
-
-
-    <!-- INTRO -->
-
-    <section class="hero" id="home">
-
-        <p>DEVELOPER • STUDENT • BUILDER</p>
-
-        <h1>
-            Hi, I am <span>Kris.</span>
-        </h1>
-
-        <h2>
-            I like building things with code.
-        </h2>
-
-        <div class="hero-description">
-            Welcome to my portfolio. Here you can find
-            projects I've made for school, personal projects,
-            programming challenges and things I've built
-            while learning.
-        </div>
-
-        <div>
-
-            <a
-                class="button github"
-                href="https://github.com/ToomKris"
-                target="_blank"
-            >
-                GitHub
-            </a>
-
-            <a
-                class="button"
-                href="#work"
-            >
-                See my work ↓
-            </a>
-
-        </div>
-
-    </section>
-
-
-    <!-- MY WORK -->
-
-    <section id="work">
-
-        <h2 class="section-title">
-            My Work
-        </h2>
-
-        <p class="section-description">
-            A collection of things I've built and worked on.
-        </p>
-
-
-        <div class="work-grid">
-
-
-            <!-- SCHOOL -->
-
-            <div class="work-card">
-
-                <div class="work-icon">
-                    🎓
-                </div>
-
-                <h3>
-                    School
-                </h3>
-
-                <p>
-                    Projects and assignments I've created
-                    during my studies.
-                </p>
-
-                <ul>
-
-                    <li>REST API Demo</li>
-                    <li>API Test</li>
-                    <li>Website as Cookbook</li>
-                    <li>Interactive Web Page</li>
-                    <li>The Soaps Website</li>
-
-                </ul>
-
-                <a
-                    class="card-link"
-                    href="https://github.com/ToomKris"
-                    target="_blank"
-                >
-                    View school projects →
-                </a>
-
-            </div>
-
-
-            <!-- PYTHON 100 -->
-
-            <div class="work-card">
-
-                <div class="work-icon">
-                    🐍
-                </div>
-
-                <h3>
-                    Python100
-                </h3>
-
-                <p>
-                    My 100-day Python challenge.
-                    Learning by writing code and building
-                    small projects.
-                </p>
-
-                <div class="progress-info">
-
-                    <span>Progress</span>
-                    <span>7 / 100</span>
-
-                </div>
-
-                <div class="progress-bar">
-
-                    <div class="progress"></div>
-
-                </div>
-
-                <a
-                    class="card-link"
-                    href="https://github.com/ToomKris/Python100"
-                    target="_blank"
-                >
-                    View Python100 →
-                </a>
-
-            </div>
-
-
-            <!-- PERSONAL PROJECTS -->
-
-            <div class="work-card">
-
-                <div class="work-icon">
-                    💡
-                </div>
-
-                <h3>
-                    Personal Projects
-                </h3>
-
-                <p>
-                    Things I build outside of school because
-                    I want to learn, experiment or solve a problem.
-                </p>
-
-                <ul>
-
-                    <li>Coming soon...</li>
-
-                </ul>
-
-                <a class="card-link" href="#about">
-                    More projects coming →
-                </a>
-
-            </div>
-
-
-            <!-- EXPERIMENTS -->
-
-            <div class="work-card">
-
-                <div class="work-icon">
-                    🧪
-                </div>
-
-                <h3>
-                    Experiments
-                </h3>
-
-                <p>
-                    Small experiments, ideas and random
-                    things I'm trying while learning to code.
-                </p>
-
-                <ul>
-
-                    <li>Coming soon...</li>
-
-                </ul>
-
-                <a class="card-link" href="#about">
-                    More coming →
-                </a>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- PYTHON 100 -->
-
-    <section>
-
-        <h2 class="section-title">
-            100 Days of Python
-        </h2>
-
-        <p class="section-description">
-            One day at a time.
-        </p>
-
-
-        <div class="python">
-
-            <h3>
-                My Python100 Journey 🐍
-            </h3>
-
-            <p>
-                I'm working through a 100-day Python challenge,
-                creating programs and learning new concepts
-                along the way.
-            </p>
-
-
-            <div class="progress-info">
-
-                <span>Days completed</span>
-                <span>7 / 100</span>
-
-            </div>
-
-            <div class="progress-bar">
-
-                <div class="progress"></div>
-
-            </div>
-
-
-            <div class="challenge-list">
-
-                <div class="challenge">
-                    Day 3 — Treasure Island
-                </div>
-
-                <div class="challenge">
-                    Day 4 — Rock Paper Scissors
-                </div>
-
-                <div class="challenge">
-                    Day 5 — Password Generator
-                </div>
-
-                <div class="challenge">
-                    Day 7 — Hangman
-                </div>
-
-            </div>
-
-
-            <a
-                class="button github"
-                href="https://github.com/ToomKris/Python100"
-                target="_blank"
-            >
-                View Python100 on GitHub →
-            </a>
-
-        </div>
-
-    </section>
-
-
-    <!-- ABOUT -->
-
-    <section id="about">
-
-        <div class="about">
-
-            <h2 class="section-title">
-                About Me
-            </h2>
-
-            <p>
-                Hi, I'm Kris. I'm a student and developer
-                learning by building things.
-            </p>
-
-            <p>
-                I enjoy programming, creating websites,
-                working with Python and experimenting with
-                different technologies.
-            </p>
-
-            <p>
-                This portfolio is where I collect the projects
-                and things I've built along the way.
-            </p>
-
-
-            <div class="skills">
-
-                <span class="skill">Python</span>
-                <span class="skill">HTML</span>
-                <span class="skill">CSS</span>
-                <span class="skill">JavaScript</span>
-                <span class="skill">Bootstrap</span>
-                <span class="skill">REST APIs</span>
-                <span class="skill">Git</span>
-                <span class="skill">GitHub</span>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- FOOTER -->
-
-    <footer>
-
-        <p>
-            Built by Kris ·
-            <a
-                href="https://github.com/ToomKris"
-                target="_blank"
-            >
-                GitHub
-            </a>
-        </p>
-
-    </footer>
-
-
+<div class="wrap">
+
+  <div class="top-row">
+    <span class="mark">YN.</span>
+  </div>
+
+  <div class="hero">
+    <h1>Hi, I'm Your Name.</h1>
+    <p>I'm a computer science student learning to build things, one project at a time.</p>
+    <p class="muted">This is where I keep my work — school projects, coding challenges, and things I've built just for fun. Have a look around, and feel free to reach out if you want to talk about any of it.</p>
+  </div>
+
+  <div class="section-label">Browse my work</div>
+
+  <ul class="folders">
+
+    <li class="folder-item">
+      <a class="folder-link" href="school.html">
+        <svg class="folder-icon" width="22" height="18" viewBox="0 0 22 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M1 3.5C1 2.11929 2.11929 1 3.5 1H8L10 3.5H18.5C19.8807 3.5 21 4.61929 21 6V14.5C21 15.8807 19.8807 17 18.5 17H3.5C2.11929 17 1 15.8807 1 14.5V3.5Z" stroke="currentColor" stroke-width="1.4"/>
+        </svg>
+        <span class="folder-text">
+          <div class="folder-name">School &amp; Uni</div>
+          <div class="folder-desc">Coursework and assignments from my degree</div>
+        </span>
+        <span class="folder-count">4 repos</span>
+      </a>
+    </li>
+
+    <li class="folder-item">
+      <a class="folder-link" href="challenges.html">
+        <svg class="folder-icon" width="22" height="18" viewBox="0 0 22 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M1 3.5C1 2.11929 2.11929 1 3.5 1H8L10 3.5H18.5C19.8807 3.5 21 4.61929 21 6V14.5C21 15.8807 19.8807 17 18.5 17H3.5C2.11929 17 1 15.8807 1 14.5V3.5Z" stroke="currentColor" stroke-width="1.4"/>
+        </svg>
+        <span class="folder-text">
+          <div class="folder-name">Challenges</div>
+          <div class="folder-desc">Coding puzzles, katas, and practice problems</div>
+        </span>
+        <span class="folder-count">6 repos</span>
+      </a>
+    </li>
+
+    <li class="folder-item">
+      <a class="folder-link" href="personal.html">
+        <svg class="folder-icon" width="22" height="18" viewBox="0 0 22 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M1 3.5C1 2.11929 2.11929 1 3.5 1H8L10 3.5H18.5C19.8807 3.5 21 4.61929 21 6V14.5C21 15.8807 19.8807 17 18.5 17H3.5C2.11929 17 1 15.8807 1 14.5V3.5Z" stroke="currentColor" stroke-width="1.4"/>
+        </svg>
+        <span class="folder-text">
+          <div class="folder-name">Personal Projects</div>
+          <div class="folder-desc">Things I built on my own, just to learn</div>
+        </span>
+        <span class="folder-count">3 repos</span>
+      </a>
+    </li>
+
+  </ul>
+
+  <footer>
+    <span>&copy; 2026 Your Name</span>
+    <div class="footer-links">
+      <a href="mailto:you@example.com">Email</a>
+      <a href="https://github.com/yourusername" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </footer>
+
+</div>
 </body>
 </html>
