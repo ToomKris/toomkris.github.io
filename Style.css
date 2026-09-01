@@ -1,0 +1,192 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500&display=swap');
+
+:root {
+  --bg: #faf9f6;
+  --text: #1c1c1a;
+  --muted: #6d6d66;
+  --line: #dedad0;
+  --accent: #3e5c76;
+  --accent-soft: #eaeff3;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 17px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+.wrap {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 64px 24px 96px;
+}
+
+/* Typography */
+
+h1, h2, h3 {
+  font-family: 'Fraunces', Georgia, serif;
+  font-weight: 500;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+h1 { font-size: 2.3rem; line-height: 1.25; }
+h2 { font-size: 1.5rem; }
+
+p { margin: 0 0 1rem; }
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+a:hover { text-decoration: underline; }
+a:focus-visible, button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.muted { color: var(--muted); }
+
+/* Mark / logo */
+
+.mark {
+  font-family: 'Fraunces', serif;
+  font-size: 1.4rem;
+  font-weight: 500;
+  text-decoration: none;
+  color: var(--text);
+}
+
+/* Top row */
+
+.top-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 56px;
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+.back-link:hover { color: var(--accent); text-decoration: none; }
+.back-link svg { flex-shrink: 0; }
+
+/* Hero */
+
+.hero { margin-bottom: 64px; }
+.hero p { max-width: 46ch; color: var(--muted); }
+.hero p:first-of-type { color: var(--text); }
+
+/* Folder list (home page) */
+
+.section-label {
+  font-size: 0.95rem;
+  color: var(--muted);
+  margin-bottom: 20px;
+}
+
+.folders {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--line);
+}
+
+.folder-item { border-bottom: 1px solid var(--line); }
+
+.folder-link {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 22px 4px;
+  color: var(--text);
+}
+.folder-link:hover { text-decoration: none; background: var(--accent-soft); margin: 0 -12px; padding-left: 16px; padding-right: 16px; border-radius: 2px; }
+
+.folder-icon { flex-shrink: 0; color: var(--accent); }
+
+.folder-text { flex: 1; }
+.folder-name { font-family: 'Fraunces', serif; font-size: 1.15rem; font-weight: 500; }
+.folder-desc { color: var(--muted); font-size: 0.92rem; margin-top: 2px; }
+
+.folder-count {
+  color: var(--muted);
+  font-size: 0.85rem;
+  white-space: nowrap;
+}
+
+/* Repo list (folder pages) */
+
+.repos {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.repo-item {
+  padding: 24px 0;
+  border-bottom: 1px solid var(--line);
+}
+.repo-item:first-child { border-top: 1px solid var(--line); }
+
+.repo-title {
+  font-family: 'Fraunces', serif;
+  font-size: 1.15rem;
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+
+.repo-desc { color: var(--muted); font-size: 0.95rem; margin-bottom: 10px; }
+
+.repo-meta {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  font-size: 0.85rem;
+}
+
+.tag {
+  color: var(--muted);
+  border: 1px solid var(--line);
+  padding: 2px 8px;
+  border-radius: 3px;
+}
+
+.repo-link { font-weight: 500; }
+
+/* Footer */
+
+footer {
+  margin-top: 80px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+.footer-links { display: flex; gap: 18px; }
+
+@media (max-width: 520px) {
+  .wrap { padding: 40px 20px 72px; }
+  h1 { font-size: 1.9rem; }
+  .folder-count { display: none; }
+}
