@@ -1,14 +1,4 @@
-```javascript
 const projects = [
-
-  {
-    ID:
-    name: "API Tester",
-    description: "A simple API testing tool.",
-    function: "personal",
-    tags: ["HTML", "CSS", "JavaScript"],
-    link: "#"
-  },
 
   {
     ID: "1"
@@ -36,6 +26,16 @@ const projects = [
       tags: ["HTML", "CSS"],
     link: "https://toomkris.github.io/Website-as-Cookbook/#"
   },
+
+   {
+    ID: "4"
+    name: " 100 Days of Code - The Complete Python Pro Bootcamp ",
+    description: "My solutions, exercises, and projects from the **100 Days of Code: The Complete Python Pro Bootcamp** by Angela Yu.",
+    function: "challenges",
+    tags: ["Python"],
+    link: "https://toomkris.github.io/Python100/"
+  }
+  
   {
     ID: "5"
     name: "The Soaps website with Bootstrap elements",
@@ -44,15 +44,32 @@ const projects = [
       tags: ["HTML", "CSS"],
     link: "https://toomkris.github.io/The-Soaps-website-Bootstrap-elements/"
   },
+  
+    {
+    ID: "6"
+    name: "Budget Management App",
+    description: "It is a homework for the University of Tartu. Originally created as a Python + EasyGUI project and later converted into a web application.",
+    function: "school",
+      tags: ["Python"],
+    link: "https://toomkris.github.io/python-program-costs-and-revenues/"
+  },
 
-  {
-    ID: "4"
-    name: "Coding Challenge",
-    description: "A programming challenge I completed.",
-    function: "challenges",
-    tags: ["Python"],
+   {
+    ID: "7"
+    name: "Simple API Tester",
+    description: "It is a homework for the University of Tartu. A simple web-based tool for testing APIs directly from your browser.",
+    function: "school",
+      tags: ["HTML"],
+    link: "https://toomkris.github.io/rest-API-demoTTU/"
+  },
+     {
+    ID:"8"
+    name: "API Tester",
+    description: "A simple API testing tool.",
+    function: "personal",
+    tags: ["HTML", "CSS", "JavaScript"],
     link: "#"
-  }
+  },
 
 ];
 ```
