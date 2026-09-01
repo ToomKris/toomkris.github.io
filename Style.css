@@ -1,192 +1,249 @@
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500&display=swap');
+```css
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap');
 
 :root {
-  --bg: #faf9f6;
-  --text: #1c1c1a;
-  --muted: #6d6d66;
-  --line: #dedad0;
-  --accent: #3e5c76;
-  --accent-soft: #eaeff3;
+  --black: #0a0a0a;
+  --white: #f7f7f5;
+  --pink: #ffb6c9;
+  --yellow: #fff200;
+  --gray: #b8b8b8;
+  --border: #1a1a1a;
 }
 
-* { box-sizing: border-box; }
+* {
+  box-sizing: border-box;
+}
 
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+}
 
 body {
   margin: 0;
-  background: var(--bg);
-  color: var(--text);
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  font-size: 17px;
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
-}
-
-.wrap {
-  max-width: 700px;
-  margin: 0 auto;
-  padding: 64px 24px 96px;
-}
-
-/* Typography */
-
-h1, h2, h3 {
-  font-family: 'Fraunces', Georgia, serif;
-  font-weight: 500;
-  margin: 0;
-  letter-spacing: -0.01em;
-}
-
-h1 { font-size: 2.3rem; line-height: 1.25; }
-h2 { font-size: 1.5rem; }
-
-p { margin: 0 0 1rem; }
-
-a {
-  color: var(--accent);
-  text-decoration: none;
-}
-a:hover { text-decoration: underline; }
-a:focus-visible, button:focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 3px;
-}
-
-.muted { color: var(--muted); }
-
-/* Mark / logo */
-
-.mark {
-  font-family: 'Fraunces', serif;
-  font-size: 1.4rem;
-  font-weight: 500;
-  text-decoration: none;
-  color: var(--text);
-}
-
-/* Top row */
-
-.top-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 56px;
-}
-
-.back-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  color: var(--muted);
-  font-size: 0.95rem;
-}
-.back-link:hover { color: var(--accent); text-decoration: none; }
-.back-link svg { flex-shrink: 0; }
-
-/* Hero */
-
-.hero { margin-bottom: 64px; }
-.hero p { max-width: 46ch; color: var(--muted); }
-.hero p:first-of-type { color: var(--text); }
-
-/* Folder list (home page) */
-
-.section-label {
-  font-size: 0.95rem;
-  color: var(--muted);
-  margin-bottom: 20px;
-}
-
-.folders {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  border-top: 1px solid var(--line);
-}
-
-.folder-item { border-bottom: 1px solid var(--line); }
-
-.folder-link {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  padding: 22px 4px;
-  color: var(--text);
-}
-.folder-link:hover { text-decoration: none; background: var(--accent-soft); margin: 0 -12px; padding-left: 16px; padding-right: 16px; border-radius: 2px; }
-
-.folder-icon { flex-shrink: 0; color: var(--accent); }
-
-.folder-text { flex: 1; }
-.folder-name { font-family: 'Fraunces', serif; font-size: 1.15rem; font-weight: 500; }
-.folder-desc { color: var(--muted); font-size: 0.92rem; margin-top: 2px; }
-
-.folder-count {
-  color: var(--muted);
-  font-size: 0.85rem;
-  white-space: nowrap;
-}
-
-/* Repo list (folder pages) */
-
-.repos {
-  list-style: none;
-  margin: 0;
+  min-height: 100vh;
+  background: var(--white);
+  color: var(--black);
+  font-family: "Space Grotesk", Arial, sans-serif;
   padding: 0;
 }
 
-.repo-item {
-  padding: 24px 0;
-  border-bottom: 1px solid var(--line);
-}
-.repo-item:first-child { border-top: 1px solid var(--line); }
+/* ------------------------------
+   MAIN LAYOUT
+------------------------------ */
 
-.repo-title {
-  font-family: 'Fraunces', serif;
-  font-size: 1.15rem;
-  font-weight: 500;
-  margin-bottom: 6px;
-}
-
-.repo-desc { color: var(--muted); font-size: 0.95rem; margin-bottom: 10px; }
-
-.repo-meta {
+body {
   display: flex;
-  align-items: center;
-  gap: 14px;
-  flex-wrap: wrap;
-  font-size: 0.85rem;
+  flex-direction: column;
 }
 
-.tag {
-  color: var(--muted);
-  border: 1px solid var(--line);
-  padding: 2px 8px;
-  border-radius: 3px;
+body::before {
+  content: "API / TESTER";
+  display: block;
+  padding: 18px 28px;
+  border-bottom: 2px solid var(--black);
+  font-family: "DM Mono", monospace;
+  font-size: 12px;
+  letter-spacing: 0.15em;
 }
 
-.repo-link { font-weight: 500; }
+/* ------------------------------
+   CONTAINER
+------------------------------ */
 
-/* Footer */
+body > * {
+  width: min(900px, calc(100% - 56px));
+  margin-left: auto;
+  margin-right: auto;
+}
 
-footer {
+h1 {
+  font-size: clamp(42px, 8vw, 90px);
+  line-height: 0.9;
+  letter-spacing: -0.07em;
   margin-top: 80px;
-  padding-top: 24px;
-  border-top: 1px solid var(--line);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 12px;
-  color: var(--muted);
-  font-size: 0.88rem;
+  margin-bottom: 60px;
+  max-width: 800px;
+  font-weight: 700;
 }
 
-.footer-links { display: flex; gap: 18px; }
+/* ------------------------------
+   LABELS
+------------------------------ */
 
-@media (max-width: 520px) {
-  .wrap { padding: 40px 20px 72px; }
-  h1 { font-size: 1.9rem; }
-  .folder-count { display: none; }
+label {
+  display: block;
+  margin-top: 32px;
+  margin-bottom: 8px;
+
+  font-family: "DM Mono", monospace;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
 }
+
+/* ------------------------------
+   INPUTS
+------------------------------ */
+
+input,
+select,
+textarea {
+  width: 100%;
+  max-width: none;
+
+  margin: 0;
+  padding: 16px 18px;
+
+  border: 2px solid var(--black);
+  border-radius: 0;
+
+  background: transparent;
+  color: var(--black);
+
+  font-family: "DM Mono", monospace;
+  font-size: 14px;
+
+  outline: none;
+  transition:
+    background 120ms ease,
+    box-shadow 120ms ease,
+    transform 120ms ease;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  background: white;
+  box-shadow: 6px 6px 0 var(--pink);
+}
+
+/* ------------------------------
+   SELECT
+------------------------------ */
+
+select {
+  cursor: pointer;
+  appearance: none;
+
+  background:
+    linear-gradient(45deg, transparent 50%, var(--black) 50%) calc(100% - 20px) 20px / 6px 6px no-repeat,
+    linear-gradient(135deg, var(--black) 50%, transparent 50%) calc(100% - 14px) 20px / 6px 6px no-repeat;
+}
+
+/* ------------------------------
+   TEXTAREAS
+------------------------------ */
+
+textarea {
+  min-height: 220px;
+  resize: vertical;
+  line-height: 1.5;
+}
+
+#response {
+  min-height: 300px;
+  background: #e9e9e7;
+}
+
+/* ------------------------------
+   BUTTON
+------------------------------ */
+
+button {
+  width: auto;
+  min-width: 220px;
+
+  margin-top: 36px;
+  margin-bottom: 70px;
+
+  padding: 17px 28px;
+
+  border: 2px solid var(--black);
+  border-radius: 0;
+
+  background: var(--black);
+  color: var(--white);
+
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    background 120ms ease,
+    color 120ms ease,
+    box-shadow 120ms ease,
+    transform 120ms ease;
+}
+
+button:hover {
+  background: var(--yellow);
+  color: var(--black);
+  box-shadow: 7px 7px 0 var(--black);
+  transform: translate(-2px, -2px);
+}
+
+button:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 var(--black);
+}
+
+/* ------------------------------
+   RESPONSE
+------------------------------ */
+
+h2 {
+  margin-top: 0;
+  padding-top: 30px;
+
+  border-top: 2px solid var(--black);
+
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+
+  font-family: "DM Mono", monospace;
+}
+
+/* ------------------------------
+   PLACEHOLDERS
+------------------------------ */
+
+::placeholder {
+  color: #888;
+  opacity: 1;
+}
+
+/* ------------------------------
+   MOBILE
+------------------------------ */
+
+@media (max-width: 600px) {
+
+  body::before {
+    padding: 14px 18px;
+  }
+
+  body > * {
+    width: calc(100% - 36px);
+  }
+
+  h1 {
+    margin-top: 55px;
+    margin-bottom: 45px;
+    font-size: 52px;
+  }
+
+  input,
+  select,
+  textarea {
+    font-size: 13px;
+  }
+
+  button {
+    width: 100%;
+  }
+}
+```
+
