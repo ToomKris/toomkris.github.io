@@ -23,7 +23,7 @@ const projects = [
     description: "A simple API testing tool.",
     function: "personal",
     tags: ["HTML", "CSS", "JavaScript"],
-    link: "#"
+    link: "Coming soon"
   },
 
   {
