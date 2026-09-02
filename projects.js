@@ -16,6 +16,14 @@
 */
 
 const projects = [
+   {
+    ID: "4",
+    name: "100 Days of Code - The Complete Python Pro Bootcamp",
+    description: "My solutions, exercises, and projects from the 100 Days of Code: The Complete Python Pro Bootcamp by Angela Yu.",
+    function: "challenges",
+    tags: ["Python"],
+    link: "https://toomkris.github.io/Python100/"
+  },
 
   {
     ID: "8",
@@ -50,15 +58,6 @@ const projects = [
     function: "school",
     tags: ["HTML", "CSS"],
     link: "https://toomkris.github.io/The-Soaps-website-Bootstrap-elements/"
-  },
-
-  {
-    ID: "4",
-    name: "100 Days of Code - The Complete Python Pro Bootcamp",
-    description: "My solutions, exercises, and projects from the 100 Days of Code: The Complete Python Pro Bootcamp by Angela Yu.",
-    function: "challenges",
-    tags: ["Python"],
-    link: "https://toomkris.github.io/Python100/"
   },
 
   {
