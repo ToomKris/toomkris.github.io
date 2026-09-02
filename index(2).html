@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ToomKris — Projects</title>
+<meta name="description" content="Projects by ToomKris, pulled live from GitHub.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #14171C;
+    --panel: #1B1F26;
+    --line: #262B33;
+    --text: #E8E6E1;
+    --text-dim: #8B92A0;
+    --accent: #D4A657;
+    --accent-dim: #8A7142;
+    --radius: 3px;
+  }
+
+  * { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Fraunces', Georgia, serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; transition: none !important; }
+  }
+
+  a { color: inherit; }
+
+  .wrap {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 5rem 1.5rem 6rem;
+  }
+
+  header.hero {
+    margin-bottom: 3.5rem;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.1rem, 5vw, 2.8rem);
+    font-weight: 500;
+    line-height: 1.15;
+    margin: 0 0 0.9rem;
+    letter-spacing: -0.01em;
+  }
+
+  .hero p {
+    font-size: 1.05rem;
+    line-height: 1.65;
+    color: var(--text-dim);
+    max-width: 34rem;
+    margin: 0;
+  }
+
+  .hero .links {
+    margin-top: 1.4rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+  }
+
+  .hero .links a {
+    text-decoration: none;
+    color: var(--accent);
+    border-bottom: 1px solid var(--accent-dim);
+    padding-bottom: 1px;
+  }
+
+  .hero .links a:hover { border-bottom-color: var(--accent); }
+
+  .hero .links span.sep {
+    color: var(--text-dim);
+    margin: 0 0.6rem;
+  }
+
+  /* search */
+  .search-row {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    border: 1px solid var(--line);
+    background: var(--panel);
+    border-radius: var(--radius);
+    padding: 0.7rem 0.9rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .search-row .prompt {
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--accent);
+    font-size: 0.95rem;
+    user-select: none;
+  }
+
+  .search-row input {
+    flex: 1;
+    background: none;
+    border: none;
+    outline: none;
+    color: var(--text);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.95rem;
+  }
+
+  .search-row input::placeholder { color: var(--text-dim); }
+
+  .meta-row {
+    display: flex;
+    justify-content: space-between;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--text-dim);
+    margin-bottom: 2.2rem;
+    padding: 0 0.1rem;
+  }
+
+  .meta-row button {
+    background: none;
+    border: none;
+    color: var(--text-dim);
+    font-family: inherit;
+    font-size: inherit;
+    cursor: pointer;
+    text-decoration: underline;
+    text-decoration-color: var(--line);
+    padding: 0;
+  }
+  .meta-row button:hover { color: var(--text); }
+
+  /* project list */
+  #list { border-top: 1px solid var(--line); }
+
+  .project {
+    display: block;
+    text-decoration: none;
+    padding: 1.3rem 0;
+    border-bottom: 1px solid var(--line);
+    opacity: 0;
+    animation: rise 0.5s ease forwards;
+  }
+
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .project-top {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .project-name {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text);
+  }
+
+  .project:hover .project-name { color: var(--accent); }
+
+  .project-date {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--text-dim);
+    white-space: nowrap;
+  }
+
+  .project-desc {
+    font-size: 0.95rem;
+    line-height: 1.55;
+    color: var(--text-dim);
+    margin: 0.45rem 0 0.6rem;
+    max-width: 38rem;
+  }
+
+  .project-tags {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+  }
+
+  .tag {
+    color: var(--text-dim);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 0.15rem 0.5rem;
+  }
+
+  .tag.lang { color: var(--accent); border-color: var(--accent-dim); }
+
+  .empty, .error {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    color: var(--text-dim);
+    padding: 2rem 0;
+  }
+
+  .error { color: #C97A6B; }
+
+  .skeleton {
+    padding: 1.3rem 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .skeleton .bar {
+    height: 0.9rem;
+    background: var(--panel);
+    border-radius: var(--radius);
+    width: 40%;
+    margin-bottom: 0.6rem;
+  }
+  .skeleton .bar.wide { width: 70%; height: 0.75rem; }
+
+  footer {
+    margin-top: 3rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--text-dim);
+  }
+
+  footer a { color: var(--text-dim); text-decoration: underline; text-decoration-color: var(--line); }
+  footer a:hover { color: var(--accent); }
+
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <header class="hero">
+    <h1>Kris builds things, mostly with Python and the web.</h1>
+    <p>A running list of things I've built at university and on my own.</p>
+    <div class="links">
+      <a href="https://github.com/ToomKris" target="_blank" rel="noopener">github.com/ToomKris</a>
+      <span class="sep">/</span>
+      <a href="KrisToomCV2026.pdf" target="_blank" rel="noopener">CV</a>
+      <span class="sep">/</span>
+      <a href="mailto:you@example.com">email</a>
+    </div>
+  </header>
+
+  <div class="search-row">
+    <span class="prompt">/</span>
+    <input id="search" type="text" placeholder="search projects, languages, tags…" autocomplete="off" spellcheck="false">
+  </div>
+  <div class="meta-row">
+    <span id="count">loading…</span>
+  </div>
+
+  <div id="list">
+    <div class="skeleton"><div class="bar"></div><div class="bar wide"></div></div>
+    <div class="skeleton"><div class="bar"></div><div class="bar wide"></div></div>
+    <div class="skeleton"><div class="bar"></div><div class="bar wide"></div></div>
+  </div>
+
+  <footer>
+    built with a static page + projects.js — no build step, no server.
+  </footer>
+
+</div>
+
+<script src="projects.js"></script>
+<script>
+  const listEl = document.getElementById("list");
+  const countEl = document.getElementById("count");
+  const searchEl = document.getElementById("search");
+
+  function render(items) {
+    listEl.innerHTML = "";
+
+    if (items.length === 0) {
+      listEl.innerHTML = `<div class="empty">no projects match that search.</div>`;
+      countEl.textContent = "0 projects";
+      return;
+    }
+
+    countEl.textContent = `${items.length} project${items.length === 1 ? "" : "s"}`;
+
+    items.forEach((p, i) => {
+      const a = document.createElement("a");
+      a.className = "project";
+      a.href = p.link && p.link !== "#" ? p.link : "#";
+      if (p.link && p.link !== "#") { a.target = "_blank"; a.rel = "noopener"; }
+      a.style.animationDelay = `${Math.min(i * 40, 400)}ms`;
+
+      const tags = (p.tags || [])
+        .map((t, idx) => `<span class="tag${idx === 0 ? " lang" : ""}">${t}</span>`)
+        .join("");
+
+      a.innerHTML = `
+        <div class="project-top">
+          <span class="project-name">${p.name}</span>
+          <span class="project-date">${p.function || ""}</span>
+        </div>
+        ${p.description ? `<p class="project-desc">${p.description}</p>` : ""}
+        <div class="project-tags">${tags}</div>
+      `;
+      listEl.appendChild(a);
+    });
+  }
+
+  function applySearch() {
+    const q = searchEl.value.trim().toLowerCase();
+    if (!q) { render(projects); return; }
+    const filtered = projects.filter(p => {
+      const haystack = [p.name, p.description, p.function, ...(p.tags || [])]
+        .filter(Boolean)
+        .join(" ")
+        .toLowerCase();
+      return haystack.includes(q);
+    });
+    render(filtered);
+  }
+
+  searchEl.addEventListener("input", applySearch);
+
+  if (typeof projects === "undefined") {
+    listEl.innerHTML = `<div class="error">projects.js didn't load — check it's in the same folder as index.html and has no syntax errors.</div>`;
+    countEl.textContent = "—";
+  } else {
+    render(projects);
+  }
+</script>
+
+</body>
+</html>
