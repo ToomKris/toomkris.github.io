@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Add a project — admin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #14171C;
+    --panel: #1B1F26;
+    --line: #262B33;
+    --text: #E8E6E1;
+    --text-dim: #8B92A0;
+    --accent: #D4A657;
+    --accent-dim: #8A7142;
+    --error: #C97A6B;
+    --ok: #8FB08A;
+    --radius: 3px;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Fraunces', Georgia, serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 640px; margin: 0 auto; padding: 4rem 1.5rem 6rem; }
+  h1 { font-size: 1.8rem; font-weight: 500; margin: 0 0 0.5rem; }
+  .sub { color: var(--text-dim); font-size: 0.95rem; line-height: 1.6; margin: 0 0 2.5rem; max-width: 32rem; }
+
+  fieldset {
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 1.4rem 1.4rem 1.6rem;
+    margin: 0 0 1.6rem;
+  }
+  legend {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--accent);
+    padding: 0 0.4rem;
+  }
+
+  label {
+    display: block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    color: var(--text-dim);
+    margin: 1rem 0 0.35rem;
+  }
+  label:first-of-type { margin-top: 0; }
+
+  input[type="text"], input[type="url"], input[type="password"], textarea, select {
+    width: 100%;
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    color: var(--text);
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 0.95rem;
+    padding: 0.6rem 0.7rem;
+    outline: none;
+  }
+  input:focus, textarea:focus, select:focus { border-color: var(--accent-dim); }
+  textarea { resize: vertical; min-height: 4.5rem; font-family: 'Fraunces', Georgia, serif; }
+  .hint { font-size: 0.78rem; color: var(--text-dim); margin-top: 0.35rem; }
+
+  button {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    border: 1px solid var(--accent-dim);
+    background: transparent;
+    color: var(--accent);
+    padding: 0.7rem 1.3rem;
+    border-radius: var(--radius);
+    cursor: pointer;
+  }
+  button:hover { background: rgba(212, 166, 87, 0.08); }
+  button:disabled { opacity: 0.5; cursor: not-allowed; }
+  button.secondary { border-color: var(--line); color: var(--text-dim); }
+
+  .status { font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; margin-top: 1rem; min-height: 1.2rem; }
+  .status.ok { color: var(--ok); }
+  .status.error { color: var(--error); white-space: pre-wrap; }
+  .status.pending { color: var(--text-dim); }
+
+  .token-row { display: flex; gap: 0.6rem; align-items: flex-end; }
+  .token-row input { flex: 1; }
+
+  details { margin-top: -0.4rem; margin-bottom: 1.6rem; }
+  summary {
+    cursor: pointer;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    color: var(--text-dim);
+  }
+  details p, details ol { font-size: 0.88rem; line-height: 1.6; color: var(--text-dim); }
+  details a { color: var(--accent); }
+</style>
+</head>
+<body>
+<div class="wrap" id="lock-screen">
+  <h1>Locked</h1>
+  <p class="sub">Enter the password to manage projects.</p>
+  <fieldset>
+    <legend>access</legend>
+    <label for="gate-password">Password</label>
+    <input type="password" id="gate-password" placeholder="••••••••" autocomplete="off">
+    <p class="status error" id="gate-status" style="display:none;"></p>
+    <button type="button" id="gate-submit" style="margin-top: 1rem;">Unlock</button>
+  </fieldset>
+</div>
+
+<div class="wrap" id="admin-content" style="display:none;"></div>
+
+<template id="admin-content-template">
+
+
+  <h1>Add a project</h1>
+  <p class="sub">Fills out one form, commits directly to <code>projects.js</code> in your repo. Nothing to edit by hand.</p>
+
+  <fieldset>
+    <legend>github access</legend>
+
+    <label for="token">Personal access token</label>
+    <div class="token-row">
+      <input type="password" id="token" placeholder="github_pat_...">
+      <button type="button" id="save-token" class="secondary">Save</button>
+    </div>
+    <p class="hint" id="token-status">no token saved on this device yet.</p>
+
+    <details>
+      <summary>how do I get a token? (one-time, ~1 minute)</summary>
+      <ol>
+        <li>Go to <a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">github.com/settings/personal-access-tokens/new</a></li>
+        <li>Name it anything, e.g. "portfolio admin"</li>
+        <li>Under <strong>Repository access</strong>, choose "Only select repositories" → pick <code>toomkris.github.io</code></li>
+        <li>Under <strong>Permissions → Repository permissions</strong>, set <strong>Contents</strong> to <strong>Read and write</strong>. Leave everything else as "No access"</li>
+        <li>Generate the token, copy it, paste it above, click Save</li>
+      </ol>
+      <p>It's stored only in this browser's local storage — never sent anywhere except directly to api.github.com when you publish. Anyone who opens this exact page on <em>this device</em> could use it, so don't share this URL, and click "forget token" below on shared computers.</p>
+    </details>
+
+    <label for="owner">Repo owner / name</label>
+    <input type="text" id="owner" value="ToomKris/toomkris.github.io">
+  </fieldset>
+
+  <form id="project-form">
+    <fieldset>
+      <legend>project</legend>
+
+      <label for="name">Name</label>
+      <input type="text" id="name" required placeholder="e.g. Weather Dashboard">
+
+      <label for="description">Description</label>
+      <textarea id="description" placeholder="One or two sentences about what it does."></textarea>
+
+      <label for="function">Type</label>
+      <select id="function">
+        <option value="school">school</option>
+        <option value="personal">personal</option>
+        <option value="challenges">challenges</option>
+      </select>
+
+      <label for="tags">Tags</label>
+      <input type="text" id="tags" placeholder="HTML, CSS, JavaScript">
+      <p class="hint">Comma-separated. First tag is shown highlighted.</p>
+
+      <label for="link">Link</label>
+      <input type="url" id="link" placeholder="https://toomkris.github.io/repo-name/">
+    </fieldset>
+
+    <button type="submit" id="publish-btn">Publish to GitHub</button>
+    <p class="status" id="status"></p>
+  </form>
+
+</template>
+
+<script>
+  const gatePasswordInput = document.getElementById("gate-password");
+  const gateSubmitBtn = document.getElementById("gate-submit");
+  const gateStatus = document.getElementById("gate-status");
+  const lockScreen = document.getElementById("lock-screen");
+  const adminContent = document.getElementById("admin-content");
+
+  const PASSWORD_HASH = "178244e60f27f21d2e4bb68b18b18f9bec1660ac266d821a4ae2694e6a7b4dbb";
+  const UNLOCK_KEY = "portfolio_admin_unlocked";
+
+  async function sha256Hex(text) {
+    const enc = new TextEncoder().encode(text);
+    const buf = await crypto.subtle.digest("SHA-256", enc);
+    return [...new Uint8Array(buf)].map(b => b.toString(16).padStart(2, "0")).join("");
+  }
+
+  function showAdmin() {
+    lockScreen.style.display = "none";
+    adminContent.innerHTML = document.getElementById("admin-content-template").innerHTML;
+    adminContent.style.display = "block";
+    initAdminForm();
+  }
+
+  async function tryUnlock() {
+    const entered = gatePasswordInput.value;
+    const hash = await sha256Hex(entered);
+    if (hash === PASSWORD_HASH) {
+      sessionStorage.setItem(UNLOCK_KEY, "1");
+      showAdmin();
+    } else {
+      gateStatus.textContent = "wrong password.";
+      gateStatus.style.display = "block";
+      gatePasswordInput.value = "";
+      gatePasswordInput.focus();
+    }
+  }
+
+  gateSubmitBtn.addEventListener("click", tryUnlock);
+  gatePasswordInput.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") tryUnlock();
+  });
+
+  if (sessionStorage.getItem(UNLOCK_KEY) === "1") {
+    showAdmin();
+  }
+
+  function initAdminForm() {
+  const tokenInput = document.getElementById("token");
+  const tokenStatus = document.getElementById("token-status");
+  const saveTokenBtn = document.getElementById("save-token");
+  const ownerInput = document.getElementById("owner");
+  const form = document.getElementById("project-form");
+  const statusEl = document.getElementById("status");
+  const publishBtn = document.getElementById("publish-btn");
+
+  const STORAGE_KEY = "portfolio_admin_token";
+  const FILE_PATH = "projects.js";
+  const BRANCH = "main";
+
+  function refreshTokenStatus() {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    tokenStatus.textContent = saved
+      ? "token saved on this device. "
+      : "no token saved on this device yet. ";
+    if (saved) {
+      const forgetBtn = document.createElement("button");
+      forgetBtn.type = "button";
+      forgetBtn.className = "secondary";
+      forgetBtn.textContent = "forget token";
+      forgetBtn.style.marginLeft = "0.4rem";
+      forgetBtn.style.padding = "0.15rem 0.5rem";
+      forgetBtn.style.fontSize = "0.72rem";
+      forgetBtn.onclick = () => {
+        localStorage.removeItem(STORAGE_KEY);
+        tokenInput.value = "";
+        refreshTokenStatus();
+      };
+      tokenStatus.appendChild(forgetBtn);
+    }
+  }
+
+  saveTokenBtn.addEventListener("click", () => {
+    const val = tokenInput.value.trim();
+    if (!val) return;
+    localStorage.setItem(STORAGE_KEY, val);
+    tokenInput.value = "";
+    refreshTokenStatus();
+  });
+
+  refreshTokenStatus();
+
+  function utf8ToBase64(str) {
+    return btoa(unescape(encodeURIComponent(str)));
+  }
+  function base64ToUtf8(str) {
+    return decodeURIComponent(escape(atob(str)));
+  }
+
+  function nextId(source) {
+    const ids = [...source.matchAll(/ID:\s*"(\d+)"/g)].map(m => parseInt(m[1], 10));
+    return (ids.length ? Math.max(...ids) : 0) + 1;
+  }
+
+  function buildEntry(id, data) {
+    const tagsList = data.tags
+      .split(",")
+      .map(t => t.trim())
+      .filter(Boolean)
+      .map(t => `"${t.replace(/"/g, '\\"')}"`)
+      .join(", ");
+
+    return `  {\n` +
+      `    ID: "${id}",\n` +
+      `    name: "${data.name.replace(/"/g, '\\"')}",\n` +
+      `    description: "${data.description.replace(/"/g, '\\"')}",\n` +
+      `    function: "${data.function}",\n` +
+      `    tags: [${tagsList}],\n` +
+      `    link: "${data.link.replace(/"/g, '\\"') || '#'}"\n` +
+      `  },\n\n`;
+  }
+
+  function setStatus(msg, kind) {
+    statusEl.textContent = msg;
+    statusEl.className = "status" + (kind ? " " + kind : "");
+  }
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const token = localStorage.getItem(STORAGE_KEY);
+    if (!token) {
+      setStatus("Save a token above first.", "error");
+      return;
+    }
+
+    const owner = ownerInput.value.trim();
+    if (!owner.includes("/")) {
+      setStatus("Repo field should look like owner/repo-name.", "error");
+      return;
+    }
+
+    const data = {
+      name: document.getElementById("name").value.trim(),
+      description: document.getElementById("description").value.trim(),
+      function: document.getElementById("function").value,
+      tags: document.getElementById("tags").value,
+      link: document.getElementById("link").value.trim()
+    };
+
+    if (!data.name) {
+      setStatus("Project needs a name.", "error");
+      return;
+    }
+
+    publishBtn.disabled = true;
+    setStatus("Fetching current projects.js…", "pending");
+
+    const apiBase = `https://api.github.com/repos/${owner}/contents/${FILE_PATH}`;
+    const headers = {
+      Authorization: `Bearer ${token}`,
+      Accept: "application/vnd.github+json"
+    };
+
+    try {
+      const getRes = await fetch(`${apiBase}?ref=${BRANCH}`, { headers });
+      if (!getRes.ok) {
+        const body = await getRes.text();
+        throw new Error(`Couldn't read projects.js (${getRes.status}). ${body}`);
+      }
+      const fileData = await getRes.json();
+      const currentContent = base64ToUtf8(fileData.content);
+
+      const id = nextId(currentContent);
+      const entry = buildEntry(id, data);
+
+      const marker = "const projects = [";
+      const idx = currentContent.indexOf(marker);
+      if (idx === -1) {
+        throw new Error("Couldn't find 'const projects = [' in the file — has its structure changed?");
+      }
+      const insertAt = idx + marker.length;
+      const updatedContent =
+        currentContent.slice(0, insertAt) + "\n\n" + entry.trimEnd() + "," +
+        currentContent.slice(insertAt);
+
+      setStatus("Committing to GitHub…", "pending");
+
+      const putRes = await fetch(apiBase, {
+        method: "PUT",
+        headers: { ...headers, "Content-Type": "application/json" },
+        body: JSON.stringify({
+          message: `Add project: ${data.name}`,
+          content: utf8ToBase64(updatedContent),
+          sha: fileData.sha,
+          branch: BRANCH
+        })
+      });
+
+      if (!putRes.ok) {
+        const body = await putRes.text();
+        throw new Error(`GitHub rejected the commit (${putRes.status}). ${body}`);
+      }
+
+      setStatus(`Published "${data.name}". It'll be live in a minute or two.`, "ok");
+      form.reset();
+    } catch (err) {
+      setStatus(err.message, "error");
+    } finally {
+      publishBtn.disabled = false;
+    }
+  });
+  }
+</script>
+
+</body>
+</html>
