@@ -3,12 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>ToomKris — Projects</title>
+
 <meta name="description" content="Projects by ToomKris, pulled live from GitHub.">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
 <style>
+
   :root {
     --bg: #14171C;
     --panel: #1B1F26;
@@ -20,9 +26,13 @@
     --radius: 3px;
   }
 
-  * { box-sizing: border-box; }
+  * {
+    box-sizing: border-box;
+  }
 
-  html { scroll-behavior: smooth; }
+  html {
+    scroll-behavior: smooth;
+  }
 
   body {
     margin: 0;
@@ -33,16 +43,23 @@
   }
 
   @media (prefers-reduced-motion: reduce) {
-    * { animation: none !important; transition: none !important; }
+    * {
+      animation: none !important;
+      transition: none !important;
+    }
   }
 
-  a { color: inherit; }
+  a {
+    color: inherit;
+  }
 
   .wrap {
     max-width: 720px;
     margin: 0 auto;
     padding: 5rem 1.5rem 6rem;
   }
+
+  /* ---------------- HERO ---------------- */
 
   header.hero {
     margin-bottom: 3.5rem;
@@ -77,14 +94,17 @@
     padding-bottom: 1px;
   }
 
-  .hero .links a:hover { border-bottom-color: var(--accent); }
+  .hero .links a:hover {
+    border-bottom-color: var(--accent);
+  }
 
   .hero .links span.sep {
     color: var(--text-dim);
     margin: 0 0.6rem;
   }
 
-  /* search */
+  /* ---------------- SEARCH ---------------- */
+
   .search-row {
     display: flex;
     align-items: center;
@@ -113,7 +133,9 @@
     font-size: 0.95rem;
   }
 
-  .search-row input::placeholder { color: var(--text-dim); }
+  .search-row input::placeholder {
+    color: var(--text-dim);
+  }
 
   .meta-row {
     display: flex;
@@ -136,10 +158,16 @@
     text-decoration-color: var(--line);
     padding: 0;
   }
-  .meta-row button:hover { color: var(--text); }
 
-  /* project list */
-  #list { border-top: 1px solid var(--line); }
+  .meta-row button:hover {
+    color: var(--text);
+  }
+
+  /* ---------------- PROJECT LIST ---------------- */
+
+  #list {
+    border-top: 1px solid var(--line);
+  }
 
   .project {
     display: block;
@@ -150,9 +178,21 @@
     animation: rise 0.5s ease forwards;
   }
 
+  /* Projects WITHOUT a link */
+  .project.no-link {
+    cursor: default;
+  }
+
   @keyframes rise {
-    from { opacity: 0; transform: translateY(6px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+      opacity: 0;
+      transform: translateY(6px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 
   .project-top {
@@ -169,7 +209,10 @@
     color: var(--text);
   }
 
-  .project:hover .project-name { color: var(--accent); }
+  /* Only linked projects get hover effect */
+  .project:not(.no-link):hover .project-name {
+    color: var(--accent);
+  }
 
   .project-date {
     font-family: 'JetBrains Mono', monospace;
@@ -201,21 +244,45 @@
     padding: 0.15rem 0.5rem;
   }
 
-  .tag.lang { color: var(--accent); border-color: var(--accent-dim); }
+  .tag.lang {
+    color: var(--accent);
+    border-color: var(--accent-dim);
+  }
 
-  .empty, .error {
+  /* ---------------- COMING SOON ---------------- */
+
+  .coming-soon {
+    display: inline-block;
+    margin-top: 0.8rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--accent);
+    border: 1px solid var(--accent-dim);
+    padding: 0.15rem 0.5rem;
+    border-radius: var(--radius);
+  }
+
+  /* ---------------- EMPTY / ERROR ---------------- */
+
+  .empty,
+  .error {
     font-family: 'JetBrains Mono', monospace;
     font-size: 0.85rem;
     color: var(--text-dim);
     padding: 2rem 0;
   }
 
-  .error { color: #C97A6B; }
+  .error {
+    color: #C97A6B;
+  }
+
+  /* ---------------- LOADING ---------------- */
 
   .skeleton {
     padding: 1.3rem 0;
     border-bottom: 1px solid var(--line);
   }
+
   .skeleton .bar {
     height: 0.9rem;
     background: var(--panel);
@@ -223,7 +290,13 @@
     width: 40%;
     margin-bottom: 0.6rem;
   }
-  .skeleton .bar.wide { width: 70%; height: 0.75rem; }
+
+  .skeleton .bar.wide {
+    width: 70%;
+    height: 0.75rem;
+  }
+
+  /* ---------------- FOOTER ---------------- */
 
   footer {
     margin-top: 3rem;
@@ -232,115 +305,412 @@
     color: var(--text-dim);
   }
 
-  footer a { color: var(--text-dim); text-decoration: underline; text-decoration-color: var(--line); }
-  footer a:hover { color: var(--accent); }
+  footer a {
+    color: var(--text-dim);
+    text-decoration: underline;
+    text-decoration-color: var(--line);
+  }
+
+  footer a:hover {
+    color: var(--accent);
+  }
+
+  /* ---------------- ACCESSIBILITY ---------------- */
 
   :focus-visible {
     outline: 2px solid var(--accent);
     outline-offset: 2px;
   }
+
 </style>
 </head>
+
 <body>
 
 <div class="wrap">
 
+  <!-- ==================== HERO ==================== -->
+
   <header class="hero">
+
     <h1>Hi, I’m Kris!</h1>
-    <p>A collection of things I’ve built with Python, web technologies, and a little curiosity.</p>
+
+    <p>
+      A collection of things I’ve built with Python,
+      web technologies, and a little curiosity.
+    </p>
+
     <div class="links">
-      <a href="https://github.com/ToomKris/toomkris.github.io" target="_blank" rel="noopener">Github Repo</a>
+
+      <a
+        href="https://github.com/ToomKris/toomkris.github.io"
+        target="_blank"
+        rel="noopener">
+        Github Repo
+      </a>
+
       <span class="sep">/</span>
-      <a href="mailto:kristoomtk@gmail.com">email</a>
+
+      <a href="mailto:kristoomtk@gmail.com">
+        email
+      </a>
+
       <span class="sep">/</span>
-      <a href="KrisToomCV2026.pdf" target="_blank" rel="noopener">CV</a>
+
+      <a
+        href="KrisToomCV2026.pdf"
+        target="_blank"
+        rel="noopener">
+        CV
+      </a>
+
       <span class="sep">/</span>
-      <a href="https://www.linkedin.com/in/kris-t-ee/" target="_blank" rel="noopener">LinkedIn</a>
+
+      <a
+        href="https://www.linkedin.com/in/kris-t-ee/"
+        target="_blank"
+        rel="noopener">
+        LinkedIn
+      </a>
+
     </div>
+
   </header>
 
+
+  <!-- ==================== SEARCH ==================== -->
+
   <div class="search-row">
+
     <span class="prompt">/</span>
-    <input id="search" type="text" placeholder="search projects, languages, tags…" autocomplete="off" spellcheck="false">
+
+    <input
+      id="search"
+      type="text"
+      placeholder="search projects, languages, tags…"
+      autocomplete="off"
+      spellcheck="false">
+
   </div>
+
+
   <div class="meta-row">
-    <span id="count">loading…</span>
+
+    <span id="count">
+      loading…
+    </span>
+
   </div>
+
+
+  <!-- ==================== PROJECT LIST ==================== -->
 
   <div id="list">
-    <div class="skeleton"><div class="bar"></div><div class="bar wide"></div></div>
-    <div class="skeleton"><div class="bar"></div><div class="bar wide"></div></div>
-    <div class="skeleton"><div class="bar"></div><div class="bar wide"></div></div>
+
+    <div class="skeleton">
+      <div class="bar"></div>
+      <div class="bar wide"></div>
+    </div>
+
+    <div class="skeleton">
+      <div class="bar"></div>
+      <div class="bar wide"></div>
+    </div>
+
+    <div class="skeleton">
+      <div class="bar"></div>
+      <div class="bar wide"></div>
+    </div>
+
   </div>
 
+
+  <!-- ==================== FOOTER ==================== -->
+
   <footer>
-  <span>© Kris Toom 2026</span>
-  <a href="https://toomkris.github.io/admin" target="_blank" rel="noopener">Admin</a>
-</footer>
+
+    <span>© Kris Toom 2026</span>
+
+    <a
+      href="https://toomkris.github.io/admin"
+      target="_blank"
+      rel="noopener">
+      Admin
+    </a>
+
+  </footer>
 
 </div>
 
+
 <script src="projects.js"></script>
+
 <script>
+
   const listEl = document.getElementById("list");
   const countEl = document.getElementById("count");
   const searchEl = document.getElementById("search");
 
+
+  /*
+   * ------------------------------------------------------------
+   * RENDER PROJECTS
+   * ------------------------------------------------------------
+   */
+
   function render(items) {
+
     listEl.innerHTML = "";
 
+
+    /*
+     * No search results
+     */
+
     if (items.length === 0) {
-      listEl.innerHTML = `<div class="empty">no projects match that search.</div>`;
+
+      listEl.innerHTML =
+        `<div class="empty">no projects match that search.</div>`;
+
       countEl.textContent = "0 projects";
+
       return;
     }
 
-    countEl.textContent = `${items.length} project${items.length === 1 ? "" : "s"}`;
+
+    /*
+     * Project count
+     */
+
+    countEl.textContent =
+      `${items.length} project${items.length === 1 ? "" : "s"}`;
+
+
+    /*
+     * Create each project
+     */
 
     items.forEach((p, i) => {
-      const a = document.createElement("a");
-      a.className = "project";
-      a.href = p.link && p.link !== "#" ? p.link : "#";
-      if (p.link && p.link !== "#") { a.target = "_blank"; a.rel = "noopener"; }
-      a.style.animationDelay = `${Math.min(i * 40, 400)}ms`;
+
+      /*
+       * A project has a working link only when:
+       *
+       * 1. p.link exists
+       * 2. p.link is not "#"
+       * 3. p.link is not "Coming soon"
+       */
+
+      const hasLink =
+        p.link &&
+        p.link !== "#" &&
+        p.link.toLowerCase() !== "coming soon";
+
+
+      /*
+       * IMPORTANT:
+       *
+       * Linked project = <a>
+       *
+       * No link = <div>
+       *
+       * Therefore an unfinished project CANNOT accidentally
+       * become clickable.
+       */
+
+      const element =
+        document.createElement(hasLink ? "a" : "div");
+
+
+      element.className =
+        `project${hasLink ? "" : " no-link"}`;
+
+
+      element.style.animationDelay =
+        `${Math.min(i * 40, 400)}ms`;
+
+
+      /*
+       * Only linked projects get href / new tab
+       */
+
+      if (hasLink) {
+
+        element.href = p.link;
+
+        element.target = "_blank";
+
+        element.rel = "noopener";
+
+      }
+
+
+      /*
+       * Project tags
+       */
 
       const tags = (p.tags || [])
-        .map((t, idx) => `<span class="tag${idx === 0 ? " lang" : ""}">${t}</span>`)
+
+        .map((t, idx) =>
+          `<span class="tag${idx === 0 ? " lang" : ""}">${t}</span>`
+        )
+
         .join("");
 
-      a.innerHTML = `
+
+      /*
+       * Coming soon label
+       */
+
+      const comingSoon = !hasLink
+
+        ? `<div class="coming-soon">Coming soon</div>`
+
+        : "";
+
+
+      /*
+       * Project HTML
+       */
+
+      element.innerHTML = `
+
         <div class="project-top">
-          <span class="project-name">${p.name}</span>
-          <span class="project-date">${p.function || ""}</span>
+
+          <span class="project-name">
+            ${p.name}
+          </span>
+
+          <span class="project-date">
+            ${p.function || ""}
+          </span>
+
         </div>
-        ${p.description ? `<p class="project-desc">${p.description}</p>` : ""}
-        <div class="project-tags">${tags}</div>
+
+
+        ${
+          p.description
+            ? `<p class="project-desc">${p.description}</p>`
+            : ""
+        }
+
+
+        <div class="project-tags">
+          ${tags}
+        </div>
+
+
+        ${comingSoon}
+
       `;
-      listEl.appendChild(a);
+
+
+      listEl.appendChild(element);
+
     });
+
   }
+
+
+  /*
+   * ------------------------------------------------------------
+   * SEARCH
+   * ------------------------------------------------------------
+   */
 
   function applySearch() {
-    const q = searchEl.value.trim().toLowerCase();
-    if (!q) { render(projects); return; }
-    const filtered = projects.filter(p => {
-      const haystack = [p.name, p.description, p.function, ...(p.tags || [])]
-        .filter(Boolean)
-        .join(" ")
-        .toLowerCase();
-      return haystack.includes(q);
-    });
+
+    const q =
+      searchEl.value.trim().toLowerCase();
+
+
+    /*
+     * No search
+     */
+
+    if (!q) {
+
+      render(projects);
+
+      return;
+    }
+
+
+    /*
+     * Search project information
+     */
+
+    const filtered =
+      projects.filter(p => {
+
+        const haystack = [
+
+          p.name,
+
+          p.description,
+
+          p.function,
+
+          ...(p.tags || [])
+
+        ]
+
+          .filter(Boolean)
+
+          .join(" ")
+
+          .toLowerCase();
+
+
+        return haystack.includes(q);
+
+      });
+
+
     render(filtered);
+
   }
 
-  searchEl.addEventListener("input", applySearch);
+
+  /*
+   * ------------------------------------------------------------
+   * SEARCH LISTENER
+   * ------------------------------------------------------------
+   */
+
+  searchEl.addEventListener(
+    "input",
+    applySearch
+  );
+
+
+  /*
+   * ------------------------------------------------------------
+   * LOAD PROJECTS
+   * ------------------------------------------------------------
+   */
 
   if (typeof projects === "undefined") {
-    listEl.innerHTML = `<div class="error">projects.js didn't load — check it's in the same folder as index.html and has no syntax errors.</div>`;
+
+    listEl.innerHTML = `
+
+      <div class="error">
+
+        projects.js didn't load —
+        check it's in the same folder as index.html
+        and has no syntax errors.
+
+      </div>
+
+    `;
+
     countEl.textContent = "—";
+
   } else {
+
     render(projects);
+
   }
+
 </script>
 
 </body>
