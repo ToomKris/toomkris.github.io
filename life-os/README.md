@@ -14,10 +14,9 @@ No servers, no subscriptions. The app runs on demo data until you connect it.
 2. **Extensions → Apps Script.** Delete what's there, paste the contents of [`apps-script/Code.gs`](apps-script/Code.gs), and save.
 3. Pick `setup` in the function dropdown and press **Run**. Google asks for permission (Sheets, Calendar, Drive, Gmail). Because it's your own script, it shows "Google hasn't verified this app": choose **Advanced → Go to Life OS**.
    `setup` creates the tabs, imports your Notion data (from `Life OS seed.json` in your Drive, which it then moves to the bin), creates a **Life OS** calendar and a **Life OS · Revolut imports** Drive folder, and turns on the schedules below.
-4. **Deploy → New deployment → Web app.** Execute as **Me**, access **Anyone**. Copy the web app URL.
-5. Back in the sheet, reload, then **🌙 Life OS → Show app connection details** to copy your token.
-6. Open the app, go to **Settings**, paste the URL and token, and press **Save & connect**.
-7. On your phone, open the app in the browser and use **Add to Home Screen**.
+4. **Deploy → New deployment → Web app.** Execute as **Me**, access **Anyone**. Copy the web app URL (it ends in `/exec`).
+5. Back in the sheet, reload, then **🌙 Life OS → Connect the app**. Paste the URL and press **Open & connect my app**: the app opens already connected.
+6. On your phone, open the app in the browser and use **Add to Home Screen**.
 
 When `Code.gs` changes later, paste the new version and use **Deploy → Manage deployments → Edit → New version** so the URL stays the same.
 

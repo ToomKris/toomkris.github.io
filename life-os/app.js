@@ -678,7 +678,7 @@
             <li>Open your <b>Life OS</b> Google Sheet → <b>Extensions → Apps Script</b>.</li>
             <li>Paste <a href="https://github.com/ToomKris/toomkris.github.io/blob/main/life-os/apps-script/Code.gs" target="_blank" rel="noopener">Code.gs</a>, save, then run <code>setup</code> and allow access.</li>
             <li><b>Deploy → New deployment → Web app</b>, execute as <i>Me</i>, access <i>Anyone</i>.</li>
-            <li>In the sheet, open <b>🌙 Life OS → Show app connection details</b> and paste both values here.</li>
+            <li>In the sheet, use <b>🌙 Life OS → Connect the app</b>. It opens this app already connected.</li>
           </ol>
         </div>
         <div class="card">
@@ -1021,7 +1021,21 @@
     else quickAdd();
   });
 
+  function connectFromLink() {
+    const m = location.hash.match(/^#\/connect\?(.*)$/);
+    if (!m) return false;
+    const q = new URLSearchParams(m[1]);
+    if (q.get('url') && q.get('token')) {
+      S.cfg = { url: q.get('url'), token: q.get('token') };
+      store.set(CFG_KEY, S.cfg); store.del(CACHE_KEY); S.data = null;
+    }
+    history.replaceState(null, '', location.pathname + '#/home');
+    load().then(() => { if (S.mode === 'live' && S.status.startsWith('Synced')) toast('Connected to your sheet 🎉'); });
+    return true;
+  }
+
   window.addEventListener('hashchange', () => {
+    if (connectFromLink()) return;
     closeForm();
     render(); window.scrollTo(0, 0);
   });
@@ -1102,5 +1116,5 @@
   // ─── Boot ──────────────────────────────────────────────────────────────────
   const savedTheme = store.get('lifeos.theme');
   if (savedTheme && savedTheme !== 'auto') document.documentElement.dataset.theme = savedTheme;
-  load();
+  if (!connectFromLink()) load();
 })();
