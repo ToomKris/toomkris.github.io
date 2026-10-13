@@ -22,6 +22,8 @@ const TABLES = {
   Settings: ['key', 'value'],
 };
 
+const APP_URL = 'https://toomkris.github.io/life-os/';
+
 const NUMBER_COLS = ['amount', 'fee', 'balanceAfter', 'budget', 'durationMin', 'monthly',
   'original', 'dueDay', 'interest'];
 
@@ -66,7 +68,7 @@ function onOpen() {
     .addItem('Run auto-categorise', 'autoLinkAll')
     .addItem('Send weekly summary now', 'weeklySummary')
     .addSeparator()
-    .addItem('Show app connection details', 'showConnection')
+    .addItem('Connect the app', 'showConnection')
     .addItem('Setup / repair', 'setup')
     .addToUi();
 }
@@ -131,15 +133,32 @@ function installTriggers_() {
   ScriptApp.newTrigger('weeklySummary').timeBased().onWeekDay(ScriptApp.WeekDay.SUNDAY).atHour(19).create();
 }
 
+/** Dialog with a one-click link that connects the Life OS app to this sheet. */
 function showConnection() {
   const s = getSettings_();
-  const url = ScriptApp.getService().getUrl() || '(deploy as web app first: Deploy → New deployment → Web app)';
+  const guess = ScriptApp.getService().getUrl() || '';
+  const url = /\/exec$/.test(guess) ? guess : '';
   const html = HtmlService.createHtmlOutput(
-    `<div style="font-family:system-ui;padding:8px;line-height:1.5">
-      <p><b>App URL</b><br><code style="word-break:break-all">${url}</code></p>
-      <p><b>Token</b><br><code>${s.token}</code></p>
-      <p>Paste both into the Life OS app → Settings.</p></div>`).setWidth(460).setHeight(220);
-  SpreadsheetApp.getUi().showModalDialog(html, '🌙 Life OS connection');
+    `<div style="font-family:system-ui,sans-serif;padding:4px 8px;line-height:1.5;color:#17142b">
+      <p style="margin-top:0">Paste the <b>Web app URL</b> from <i>Deploy → Manage deployments</i> (it ends in <code>/exec</code>):</p>
+      <input id="u" value="${url}" placeholder="https://script.google.com/macros/s/…/exec"
+        style="width:100%;padding:9px;border:1px solid #ccc;border-radius:8px;box-sizing:border-box">
+      <p><button id="go" style="background:#6c4cf5;color:#fff;border:0;border-radius:10px;padding:10px 16px;font-weight:700;cursor:pointer">🌙 Open & connect my app</button></p>
+      <p style="font-size:12px;color:#666">Token (if you connect by hand): <code>${s.token}</code></p>
+      <script>
+        document.getElementById('go').onclick = function () {
+          var u = document.getElementById('u').value.trim();
+          if (!/^https:\/\/script\.google\.com\/.+\/exec$/.test(u)) { alert('That should be the web app URL ending in /exec'); return; }
+          window.open('${APP_URL}#/connect?url=' + encodeURIComponent(u) + '&token=${s.token}', '_blank');
+          google.script.host.close();
+        };
+      </script></div>`).setWidth(480).setHeight(260);
+  try {
+    SpreadsheetApp.getUi().showModalDialog(html, '🌙 Connect Life OS');
+  } catch (err) {
+    // Run from the script editor: no dialog available there.
+    console.log('Setup done. Deploy as a web app, then in the sheet use 🌙 Life OS → Connect the app. Token: ' + s.token);
+  }
 }
 
 // ─── Web API ─────────────────────────────────────────────────────────────────
