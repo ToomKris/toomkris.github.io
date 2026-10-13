@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Life OS</title>
+  <meta name="description" content="Training, money, trips and calendar in one place.">
+  <meta name="theme-color" content="#14112a">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icon-192.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="brand"><span class="brand-moon">🌙</span><span>Life OS</span></div>
+      <nav class="nav" id="nav">
+        <a href="#/home" data-route="home"><span class="ni">✦</span><span>Today</span></a>
+        <a href="#/calendar" data-route="calendar"><span class="ni">🗓️</span><span>Calendar</span></a>
+        <a href="#/training" data-route="training"><span class="ni">🏋️</span><span>Training</span></a>
+        <a href="#/money" data-route="money"><span class="ni">💸</span><span>Money</span></a>
+        <a href="#/trips" data-route="trips"><span class="ni">✈️</span><span>Trips</span></a>
+        <a href="#/loans" data-route="loans"><span class="ni">🏦</span><span>Loans</span></a>
+        <a href="#/settings" data-route="settings" class="nav-settings"><span class="ni">⚙️</span><span>Settings</span></a>
+      </nav>
+      <div class="sync" id="sync"></div>
+    </aside>
+    <main class="main" id="view" tabindex="-1"></main>
+  </div>
+  <button class="fab" id="fab" aria-label="Add">+</button>
+  <div class="sheet-backdrop" id="backdrop" hidden></div>
+  <div class="modal" id="modal" role="dialog" aria-modal="true" hidden></div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <div class="tip" id="tip" hidden></div>
+  <script src="app.js"></script>
+</body>
+</html>
